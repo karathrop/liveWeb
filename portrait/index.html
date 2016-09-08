@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Live Portrait</title>
+		<script type="text/javascript">
+			function init() {
+				videos = document.getElementById("videos");
+
+				lyric1 = document.getElementById("lyric1");
+				lyric2 = document.getElementById("lyric2");
+				lyric3 = document.getElementById("lyric3");
+				lyric4 = document.getElementById("lyric4");
+				lyric5 = document.getElementById("lyric5");
+				lyric6 = document.getElementById("lyric6");
+
+				portrait = document.getElementById("portrait");
+
+				lyric1.addEventListener("click", function()  {
+					videos.src= "Week1/itpisbackbaby.mp4";
+					videos.play();
+					portrait.style.display="none";
+				});
+		}
+</script>
+
+		</script>
+		<style>
+
+			h2 {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 400;
+				position: absolute;
+				left: 30px;
+
+			}
+		/*	h3 {
+				color: red;
+				position: relative;
+				left: 30px;
+				top: 80px;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 300;
+			}*/
+
+			#videos {
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				/*opacity: 1;*/
+			}
+
+			#portrait {
+				position: absolute;
+				right: 30px;
+				top: 100px;
+			}
+
+			button.word {
+				background: none;
+				border: none;
+				color: red;
+				position: relative;
+				left: 30px;
+				top: 80px;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 300;
+
+			}
+		</style>
+
+		
+
+	</head>
+
+
+<body onload="init()">
+
+
+	<div id="lyrics">
+		<h2>Choose a lyric</h2>
+
+		<ul style="list-style: none;">
+
+		<li><button id="lyric1" class="word">Rock your body</button></li>
+		<li><button id="lyric2" class="word">Everybody get up</button></li>
+		<li><button id="lyric3" class="word">Lyric 3</button></li>
+		<li><button id="lyric4" class="word">Lyric 4</button></li>
+		<li><button id="lyric5" class="word">Lyric 5</button></li>
+		<li><button id="lyric6" class="word">Lyric 6</button></li>
+
+		</ul>
+
+		<!--
+		<button id="lyric1" class="word">Rock your body</button>
+		<button id="lyric2" class="word">Everybody get up</button>
+		<button id="lyric3" class="word">Lyric 3</button>
+		<button id="lyric4" class="word">Lyric 4</button>
+		<button id="lyric5" class="word">Lyric 5</button>
+		<button id="lyric6" class="word">Lyric 6</button>
+		-->
+	
+	</div>
+
+
+	<!-- videos on the right -->
+	<!-- <div id="video">
+		<video width="480" height="320"  id="video1" class="videos">
+			<source src="Week1/itpisbackbaby.mp4" >
+		</video>
+		<video width="480" height="320"   id="video2" class="videos">
+			<source src="Week1/itpisbackbaby.mp4" >
+		</video>
+		<video width="480" height="320"   id="video3" class="videos">
+			<source src="Week1/itpisbackbaby.mp4" >
+		</video>
+		
+	</div> -->
+
+
+
+	<video id="videos" width="300" height="420">
+		<source src="" >
+	</video>
+
+
+	<div id="portrait">
+		<img src="Week1/portrait.jpg" width="300" height= "420">
+
+	</div>
+
+
+</body>
+
+
+
+</html>
