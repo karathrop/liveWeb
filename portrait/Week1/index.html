@@ -29,9 +29,9 @@
 				var lyric1 = document.getElementById("lyric1");
 				var lyric2 = document.getElementById("lyric2");
 				var lyric3 = document.getElementById("lyric3");
-				// var lyric4 = document.getElementById("lyric4");
-				// var lyric5 = document.getElementById("lyric5");
-				// var lyric6 = document.getElementById("lyric6");
+				var lyric4 = document.getElementById("lyric4");
+				var lyric5 = document.getElementById("lyric5");
+				var lyric6 = document.getElementById("lyric6");
 
 				videos.onended = function() {
 					baby_portrait.style.display="block";
@@ -55,9 +55,9 @@
 					lyric1.style.color="white";
 					lyric2.style.color="white";
 					lyric3.style.color="white";
-					// lyric4.style.color="white";
-					// lyric5.style.color="white";
-					// lyric6.style.color="white";
+					lyric4.style.color="white";
+					lyric5.style.color="white";
+					lyric6.style.color="white";
 				}
 				
 				lyric1.addEventListener("click", function()  {
@@ -73,18 +73,18 @@
 					playVideo("vid3.mp4", "vid3.vtt");
 					this.style.color="#cffde5";
 				});
-				// lyric4.addEventListener("click", function()  {
-				// 	playVideo("portrait_filler.mp4", "vid3.vtt");
-				// 	this.style.color="#cffde5";
-				// });
-				// lyric5.addEventListener("click", function()  {
-				// 	playVideo("portrait_filler.mp4","vid3.vtt");
-				// 	this.style.color="#cffde5";
-				// });
-				// lyric6.addEventListener("click", function()  {
-				// 	playVideo("portrait_filler.mp4", "vid3.vtt");
-				// 	this.style.color="#cffde5";
-				// });
+				lyric4.addEventListener("click", function()  {
+					playVideo("vid4.mp4", "vid4.vtt");
+					this.style.color="#cffde5";
+				});
+				lyric5.addEventListener("click", function()  {
+					playVideo("vid5.mp4","vid3.vtt");
+					this.style.color="#cffde5";
+				});
+				lyric6.addEventListener("click", function()  {
+					playVideo("vid6.mp4", "vid3.vtt");
+					this.style.color="#cffde5";
+				});
 
 				backbutton = document.getElementById("backbutton");
 
@@ -219,9 +219,9 @@
 		<li><button id="lyric1" class="word">São as águas de Março</button></li>
 		<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
 		<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
-		<!-- <li><button id="lyric4" class="word">Lyrics 4</button></li>
-		<li><button id="lyric5" class="word">Lyric 5</button></li>
-		<li><button id="lyric6" class="word">Lyric 6</button></li> -->
+		<li><button id="lyric4" class="word">Hamilton</button></li>
+		<li><button id="lyric5" class="word">Ja sei namorar</button></li>
+		<li><button id="lyric6" class="word">That's life</button></li>
 		</ul>			
 		
 
