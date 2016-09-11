@@ -11,25 +11,27 @@
 				// 	introVid.play();
 				// });
 
-				button = document.getElementById("button");
+				var button = document.getElementById("button");
 
 				button.addEventListener("click", function() {
 					Page1.style.display="none";
 					Page2.style.display="block";
 				})
 
-				portraits_all = document.getElementById("portraits_all");
+				var portraits_all = document.getElementById("portraits_all");
 
-				baby_portrait = document.getElementById("baby_portrait");
+				var baby_portrait = document.getElementById("baby_portrait");
 
-				videos = document.getElementById("videos");
+				var videos = document.getElementById("videos");
+				var subtitle = document.getElementById("subtitle");
+				
+				var lyric1 = document.getElementById("lyric1");
+				var lyric2 = document.getElementById("lyric2");
+				var lyric3 = document.getElementById("lyric3");
+				var lyric4 = document.getElementById("lyric4");
+				var lyric5 = document.getElementById("lyric5");
+				var lyric6 = document.getElementById("lyric6");
 
-				lyric1 = document.getElementById("lyric1");
-				lyric2 = document.getElementById("lyric2");
-				lyric3 = document.getElementById("lyric3");
-				lyric4 = document.getElementById("lyric4");
-				lyric5 = document.getElementById("lyric5");
-				lyric6 = document.getElementById("lyric6");
 				videos.onended = function() {
 					baby_portrait.style.display="block";
 					videos.style.display="none";
@@ -38,6 +40,7 @@
 
 				function playVideo(videoURL) {
 					videos.src= videoURL;
+					subtitle.src= "vid1.vtt";
 					videos.play();
 					portraits_all.style.display="none";
 					baby_portrait.style.display="none";
@@ -187,6 +190,8 @@
 
 		<video id="introVid" width="500" height="720" autoplay loop>
 			<source src="introvid.mp4">
+			<track label="English" id="subtitle" kind="subtitles" srclang="en" default>
+
 		</video>
 		<button id="button">
 			Sing with me
