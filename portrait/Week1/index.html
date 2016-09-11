@@ -2,12 +2,197 @@
 <html>
 	<head>
 		<title>Live Portrait</title>
-		<script type="text/javascript"></script>
+		<script type="text/javascript">
+			function init() {
+
+				// introVid = document.getElementById("introVid");
+
+				// introVid.addEventListener("load" , function) {
+				// 	introVid.play();
+				// });
+
+				button = document.getElementById("button");
+
+				button.addEventListener("click", function() {
+					Page1.style.display="none";
+					Page2.style.display="block";
+				})
+
+				portraits_all = document.getElementById("portraits_all");
+
+				videos = document.getElementById("videos");
+
+				lyric1 = document.getElementById("lyric1");
+				lyric2 = document.getElementById("lyric2");
+				lyric3 = document.getElementById("lyric3");
+				lyric4 = document.getElementById("lyric4");
+				lyric5 = document.getElementById("lyric5");
+				lyric6 = document.getElementById("lyric6");
+
+				
+				lyric1.addEventListener("click", function()  {
+					videos.src= "vid1.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+				lyric2.addEventListener("click", function()  {
+					videos.src= "vid2.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+				lyric3.addEventListener("click", function()  {
+					videos.src= "vid3.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+				lyric4.addEventListener("click", function()  {
+					videos.src= "portrait_filler.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+				lyric5.addEventListener("click", function()  {
+					videos.src= "portrait_filler.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+				lyric6.addEventListener("click", function()  {
+					videos.src= "portrait_filler.mp4";
+					videos.play();
+					portraits_all.style.display="none";
+				});
+
+				button2 = document.getElementById("button2");
+
+				button2.addEventListener("click", function(){
+					Page2.style.display="none";
+					Page1.style.display="block";
+				})
+		}
+</script>
+
+		</script>
+		<style>
+			body {
+				background-color: #E075AD;
+			}
+
+			h1 {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 200;
+				position: absolute;
+				left: 670px;
+				top: 80px;
+				font-size: 50px;
+			}
+			h2 {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 400;
+				position: absolute;
+				left: 30px;
+				font-size: 30px;
+
+			}
+
+			#introVid {
+				position: absolute;
+				right: 30%;
+				top: 10%;
+				margin: auto;
+				border: none;
+			}
+
+			#videos {
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				/*opacity: 1;*/
+			}
+
+			#button {
+				position: absolute;
+				right: 45%;
+				top: 30%;
+				margin: auto;
+				border: none;
+			}
+
+			#portraits_all {
+				position: absolute;
+				right: 10px;
+				top: 100px;
+			}
+
+			button.word {
+				background: none;
+				border: none;
+				color: white;
+				position: relative;
+				left: 30px;
+				top: 80px;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 300;
+			}
+
+			#button2 {
+				position: absolute;
+				right: 90%;
+				top: 80%;
+				margin: auto;
+				border: none;
+			}
+		</style>
+
+		
 
 	</head>
 
 
-<body>
+<body onload="init()">
+	<div id="Page1" class="page" style="display:block">
+		<h1>KC Live</h2>
+
+		<video id="introVid" width="500" height="720" autoplay loop>
+			<source src="introvid.mp4">
+		</video>
+		<button id="button">
+			Sing with me
+		</button>		
+	</div>
+
+	<div id="Page2" class="page" style="display:none">
+
+		
+			<h2>Choose a lyric</h2>
+
+			<ul style="list-style: none;">
+
+			<li><button id="lyric1" class="word">Sao as aguas de Marco</button></li>
+			<li>    </li>
+			<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
+			<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
+			<li><button id="lyric4" class="word">Lyrics 4</button></li>
+			<li><button id="lyric5" class="word">Lyric 5</button></li>
+			<li><button id="lyric6" class="word">Lyric 6</button></li>
+			</ul>			
+		
+
+		<video id="videos" width="400" height="420">
+			<source src="" >
+		</video>
+
+
+		<div id="portraits_all">
+			<img src="portraits_all.png" width="300" height="300" border="none">
+		</div>
+		<button id="button2">
+			Back it up
+		</button>
+
+	</div>	
+
 </body>
 
 
