@@ -1,0 +1,20 @@
+﻿1
+00:00:00,000 --> 00:00:01,100
+I've been a
+
+2
+00:00:01,518 --> 00:00:04,200
+puppet, a pauper, a poet
+
+3
+00:00:04,210 --> 00:00:07,420
+a pawn, and a king
+
+4
+00:00:07,430 --> 00:00:11,170
+I've been up and down and over and out
+
+5
+00:00:11,180 --> 00:00:12,990
+And I know one thing
+
