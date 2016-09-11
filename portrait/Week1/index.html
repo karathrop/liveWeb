@@ -45,6 +45,8 @@
 					var subt = document.createElement("track");
 					subt.kind="subtitles";
 					subt.src= subtitleURL;
+					subt.default ="default";
+					subt.srclang="en";
 					videos.appendChild(subt);
 					videos.play();
 					portraits_all.style.display="none";
