@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Live Portrait</title>
+		<meta charset="UTF-8">
 		<script type="text/javascript">
 			function init() {
 
@@ -28,9 +29,9 @@
 				var lyric1 = document.getElementById("lyric1");
 				var lyric2 = document.getElementById("lyric2");
 				var lyric3 = document.getElementById("lyric3");
-				var lyric4 = document.getElementById("lyric4");
-				var lyric5 = document.getElementById("lyric5");
-				var lyric6 = document.getElementById("lyric6");
+				// var lyric4 = document.getElementById("lyric4");
+				// var lyric5 = document.getElementById("lyric5");
+				// var lyric6 = document.getElementById("lyric6");
 
 				videos.onended = function() {
 					baby_portrait.style.display="block";
@@ -38,9 +39,9 @@
 					
 				}
 
-				function playVideo(videoURL) {
+				function playVideo(videoURL, subtitleURL) {
 					videos.src= videoURL;
-					subtitle.src= "vid1.vtt";
+					subtitle.src= subtitleURL;
 					videos.play();
 					portraits_all.style.display="none";
 					baby_portrait.style.display="none";
@@ -48,36 +49,36 @@
 					lyric1.style.color="white";
 					lyric2.style.color="white";
 					lyric3.style.color="white";
-					lyric4.style.color="white";
-					lyric5.style.color="white";
-					lyric6.style.color="white";
+					// lyric4.style.color="white";
+					// lyric5.style.color="white";
+					// lyric6.style.color="white";
 				}
 				
 				lyric1.addEventListener("click", function()  {
-					playVideo("vid1.mp4");
+					playVideo("vid1.mp4", "vid1.vtt");
 					this.style.color="#cffde5";
 					
 				});
 				lyric2.addEventListener("click", function()  {
-					playVideo("vid2.mp4");
+					playVideo("vid_2.mp4", "vid_2.vtt");
 					this.style.color="#cffde5";
 				});
 				lyric3.addEventListener("click", function()  {
-					playVideo("vid3.mp4");
+					playVideo("vid3.mp4", "vid3.vtt");
 					this.style.color="#cffde5";
 				});
-				lyric4.addEventListener("click", function()  {
-					playVideo("portrait_filler.mp4");
-					this.style.color="#cffde5";
-				});
-				lyric5.addEventListener("click", function()  {
-					playVideo("portrait_filler.mp4");
-					this.style.color="#cffde5";
-				});
-				lyric6.addEventListener("click", function()  {
-					playVideo("portrait_filler.mp4");
-					this.style.color="#cffde5";
-				});
+				// lyric4.addEventListener("click", function()  {
+				// 	playVideo("portrait_filler.mp4", "vid3.vtt");
+				// 	this.style.color="#cffde5";
+				// });
+				// lyric5.addEventListener("click", function()  {
+				// 	playVideo("portrait_filler.mp4","vid3.vtt");
+				// 	this.style.color="#cffde5";
+				// });
+				// lyric6.addEventListener("click", function()  {
+				// 	playVideo("portrait_filler.mp4", "vid3.vtt");
+				// 	this.style.color="#cffde5";
+				// });
 
 				button2 = document.getElementById("button2");
 
@@ -203,12 +204,12 @@
 
 			<ul style="list-style: none;">
 
-			<li><button id="lyric1" class="word">Sao as aguas de Marco</button></li>
+			<li><button id="lyric1" class="word">São as águas de Março</button></li>
 			<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
 			<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
-			<li><button id="lyric4" class="word">Lyrics 4</button></li>
+			<!-- <li><button id="lyric4" class="word">Lyrics 4</button></li>
 			<li><button id="lyric5" class="word">Lyric 5</button></li>
-			<li><button id="lyric6" class="word">Lyric 6</button></li>
+			<li><button id="lyric6" class="word">Lyric 6</button></li> -->
 			</ul>			
 		
 
