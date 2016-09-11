@@ -20,6 +20,8 @@
 
 				portraits_all = document.getElementById("portraits_all");
 
+				baby_portrait = document.getElementById("baby_portrait");
+
 				videos = document.getElementById("videos");
 
 				lyric1 = document.getElementById("lyric1");
@@ -28,37 +30,50 @@
 				lyric4 = document.getElementById("lyric4");
 				lyric5 = document.getElementById("lyric5");
 				lyric6 = document.getElementById("lyric6");
+				videos.onended = function() {
+					baby_portrait.style.display="block";
+					videos.style.display="none";
+					
+				}
 
+				function playVideo(videoURL) {
+					videos.src= videoURL;
+					videos.play();
+					portraits_all.style.display="none";
+					baby_portrait.style.display="none";
+					videos.style.display="block";
+					lyric1.style.color="white";
+					lyric2.style.color="white";
+					lyric3.style.color="white";
+					lyric4.style.color="white";
+					lyric5.style.color="white";
+					lyric6.style.color="white";
+				}
 				
 				lyric1.addEventListener("click", function()  {
-					videos.src= "vid1.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("vid1.mp4");
+					this.style.color="#cffde5";
+					
 				});
 				lyric2.addEventListener("click", function()  {
-					videos.src= "vid2.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("vid2.mp4");
+					this.style.color="#cffde5";
 				});
 				lyric3.addEventListener("click", function()  {
-					videos.src= "vid3.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("vid3.mp4");
+					this.style.color="#cffde5";
 				});
 				lyric4.addEventListener("click", function()  {
-					videos.src= "portrait_filler.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("portrait_filler.mp4");
+					this.style.color="#cffde5";
 				});
 				lyric5.addEventListener("click", function()  {
-					videos.src= "portrait_filler.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("portrait_filler.mp4");
+					this.style.color="#cffde5";
 				});
 				lyric6.addEventListener("click", function()  {
-					videos.src= "portrait_filler.mp4";
-					videos.play();
-					portraits_all.style.display="none";
+					playVideo("portrait_filler.mp4");
+					this.style.color="#cffde5";
 				});
 
 				button2 = document.getElementById("button2");
@@ -66,6 +81,7 @@
 				button2.addEventListener("click", function(){
 					Page2.style.display="none";
 					Page1.style.display="block";
+					
 				})
 		}
 </script>
@@ -73,7 +89,7 @@
 		</script>
 		<style>
 			body {
-				background-color: #E075AD;
+				background-color: #f6546a;
 			}
 
 			h1 {
@@ -124,6 +140,13 @@
 				top: 100px;
 			}
 
+			#baby_portrait{
+				position: absolute;
+				right: 10px;
+				top: 100px;
+				display: none;
+			}
+
 			button.word {
 				background: none;
 				border: none;
@@ -134,6 +157,11 @@
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				font-size: 30px;
 				font-weight: 300;
+				cursor: pointer;
+			}
+
+			button.word:hover {
+				font-weight: 500;
 			}
 
 			#button2 {
@@ -142,6 +170,9 @@
 				top: 80%;
 				margin: auto;
 				border: none;
+			}
+			li{
+				height: 60px;
 			}
 		</style>
 
@@ -170,7 +201,6 @@
 			<ul style="list-style: none;">
 
 			<li><button id="lyric1" class="word">Sao as aguas de Marco</button></li>
-			<li>    </li>
 			<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
 			<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
 			<li><button id="lyric4" class="word">Lyrics 4</button></li>
@@ -185,10 +215,13 @@
 
 
 		<div id="portraits_all">
-			<img src="portraits_all.png" width="300" height="300" border="none">
+			<img src="portraits_all.png" width="400" height="400" border="none">
+		</div>
+		<div id="baby_portrait">
+			<img src="babykc.jpg" width="300" height="400" border="none">
 		</div>
 		<button id="button2">
-			Back it up
+			Dance break
 		</button>
 
 	</div>	
