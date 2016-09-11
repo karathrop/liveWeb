@@ -12,7 +12,7 @@
 				// 	introVid.play();
 				// });
 
-				var button = document.getElementById("button");
+				var button = document.getElementById("signwithme");
 
 				button.addEventListener("click", function() {
 					Page1.style.display="none";
@@ -41,7 +41,11 @@
 
 				function playVideo(videoURL, subtitleURL) {
 					videos.src= videoURL;
-					subtitle.src= subtitleURL;
+					videos.innerHTML =""; //clear video tag
+					var subt = document.createElement("track");
+					subt.kind="subtitles";
+					subt.src= subtitleURL;
+					videos.appendChild(subt);
 					videos.play();
 					portraits_all.style.display="none";
 					baby_portrait.style.display="none";
@@ -80,9 +84,9 @@
 				// 	this.style.color="#cffde5";
 				// });
 
-				button2 = document.getElementById("button2");
+				backbutton = document.getElementById("backbutton");
 
-				button2.addEventListener("click", function(){
+				backbutton.addEventListener("click", function(){
 					Page2.style.display="none";
 					Page1.style.display="block";
 					
@@ -94,14 +98,16 @@
 		<style>
 			body {
 				background-color: #f6546a;
+				padding:0;
+				margin:0;
 			}
 
 			h1 {
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				font-size: 30px;
 				font-weight: 200;
-				position: absolute;
-				left: 670px;
+/*				position: absolute;*/
+				left: 50%;
 				top: 80px;
 				font-size: 50px;
 			}
@@ -116,8 +122,7 @@
 			}
 
 			#introVid {
-				position: absolute;
-				right: 30%;
+				left: 50%;
 				top: 10%;
 				margin: auto;
 				border: none;
@@ -128,14 +133,6 @@
 				right: 30px;
 				top: 100px;
 				/*opacity: 1;*/
-			}
-
-			#button {
-				position: absolute;
-				right: 45%;
-				top: 30%;
-				margin: auto;
-				border: none;
 			}
 
 			#portraits_all {
@@ -151,30 +148,46 @@
 				display: none;
 			}
 
-			button.word {
+			button {
 				background: none;
 				border: none;
 				color: white;
-				position: relative;
-				left: 30px;
-				top: 80px;
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				font-size: 30px;
 				font-weight: 300;
 				cursor: pointer;
 			}
 
-			button.word:hover {
+			button:hover {
 				font-weight: 500;
 			}
 
-			#button2 {
-				position: absolute;
-				right: 90%;
-				top: 80%;
-				margin: auto;
+			#videolist button {
+				position: relative;
+				left: 30px;
+				top: 80px;
+			}
+			#signwithme {
+				display:block;
+				margin: 30px auto;
+				cursor: pointer;
 				border: none;
 			}
+
+			#backbutton {
+				left:30px;
+				color: #a1fdfd;
+				bottom: 10%;
+				position: absolute;
+			}
+
+			#Page1 {
+				width:100%;
+				height:700px;
+				text-align: center;
+				margin:0 auto;
+			}
+
 			li{
 				height: 60px;
 			}
@@ -186,37 +199,31 @@
 
 
 <body onload="init()">
-	<div id="Page1" class="page" style="display:block">
+	<div id="Page1">
 		<h1>KC Live</h2>
-
-		<video id="introVid" width="500" height="720" autoplay loop>
-			<source src="introvid.mp4">
-		</video>
-		<button id="button">
+		<video id="introVid" width="640" height="360" autoplay loop src="introvid.mp4"></video>
+		<button id="signwithme">
 			Sing with me
-		</button>		
+		</button>	
 	</div>
 
-	<div id="Page2" class="page" style="display:none">
+	<div id="Page2" style="display:none">
 
 		
-			<h2>Choose a lyric</h2>
+		<h2>Choose a lyric</h2>
 
-			<ul style="list-style: none;">
+		<ul id="videolist" style="list-style: none;">
 
-			<li><button id="lyric1" class="word">São as águas de Março</button></li>
-			<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
-			<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
-			<!-- <li><button id="lyric4" class="word">Lyrics 4</button></li>
-			<li><button id="lyric5" class="word">Lyric 5</button></li>
-			<li><button id="lyric6" class="word">Lyric 6</button></li> -->
-			</ul>			
+		<li><button id="lyric1" class="word">São as águas de Março</button></li>
+		<li><button id="lyric2" class="word">Isn't it ironic?</button></li>
+		<li><button id="lyric3" class="word">Oh Darling, please believe me</button></li>
+		<!-- <li><button id="lyric4" class="word">Lyrics 4</button></li>
+		<li><button id="lyric5" class="word">Lyric 5</button></li>
+		<li><button id="lyric6" class="word">Lyric 6</button></li> -->
+		</ul>			
 		
 
-		<video id="videos" width="400" height="420">
-			<source src="" >
-			<track label="English" id="subtitle" kind="subtitles" srclang="en" default>
-		</video>
+		<video id="videos" width="640" height="360"></video>
 
 
 		<div id="portraits_all">
@@ -225,7 +232,8 @@
 		<div id="baby_portrait">
 			<img src="babykc.jpg" width="300" height="400" border="none">
 		</div>
-		<button id="button2">
+
+		<button id="backbutton">
 			Dance break
 		</button>
 
