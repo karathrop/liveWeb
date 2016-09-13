@@ -1,4 +1,4 @@
-// function init() {
+function init() {
 
 				var button = document.getElementById("signwithme");
 
@@ -49,28 +49,28 @@
 				}
 				
 				lyric1.addEventListener("click", function()  {
-					playVideo("vid1.mp4", "vid1.vtt");
+					playVideo("videos/vid1.mp4", "subtitles/vid1.vtt");
 					this.style.color="#cffde5";
 					
 				});
 				lyric2.addEventListener("click", function()  {
-					playVideo("vid_2.mp4", "vid_2.vtt");
+					playVideo("videos/vid_2.mp4", "subtitles/vid_2.vtt");
 					this.style.color="#cffde5";
 				});
 				lyric3.addEventListener("click", function()  {
-					playVideo("vid3.mp4", "vid3.vtt");
+					playVideo("videos/vid3.mp4", "subtitles/vid3.vtt");
 					this.style.color="#cffde5";
 				});
 				lyric4.addEventListener("click", function()  {
-					playVideo("vid4.mp4", "vid4.vtt");
+					playVideo("videos/vid4.mp4", "subtitles/vid4.vtt");
 					this.style.color="#cffde5";
 				});
 				lyric5.addEventListener("click", function()  {
-					playVideo("vid5.mp4","vid5.vtt");
+					playVideo("videos/vid5.mp4","subtitles/vid5.vtt");
 					this.style.color="#cffde5";
 				});
 				lyric6.addEventListener("click", function()  {
-					playVideo("vid6.mp4", "vid6.vtt");
+					playVideo("videos/vid6.mp4", "subtitles/vid6.vtt");
 					this.style.color="#cffde5";
 				});
 
@@ -81,4 +81,4 @@
 					Page1.style.display="block";
 					
 				})
-		
+		}
