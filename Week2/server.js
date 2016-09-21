@@ -49,7 +49,9 @@ io.sockets.on('connection',
 			
 			// Send it to all of the clients
 			// socket.broadcast.emit('chatmessage', data);
-			io.sockets.emit('chatmessage', data);
+			// io.sockets.emit('chatmessage', data);
+			io.emit('chatmessage', message: data, userId:userId});
+
 		});
 		
 		

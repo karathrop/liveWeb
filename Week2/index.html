@@ -14,9 +14,15 @@
 			// Receive from any event
 			socket.on('chatmessage', function (data) {
 				console.log(data);
-				var previousMessages = document.getElementById('messages').innerHTML;
-				document.getElementById('chatWindow').innerHTML = document.getElementById('chatWindow').innerHTML + '</br>' + data;
 
+				document.getElementById("text").innerHTML = data.userId + data.message;
+				console.log(data.userId + data.message);
+
+				// var previousMessages = document.getElementById('messages').innerHTML;
+				// document.getElementById('chatWindow').innerHTML = document.getElementById('chatWindow').innerHTML + '</br>' + data;
+				incoming = data;
+			
+				// addSent();
 			});
 
 			window.addEventListener('load', init);
@@ -45,13 +51,11 @@
 		        document.getElementById(div.id).innerHTML = "<span id = 'them'>Them</span>: " +incoming;
 		    }
 
-			
-
-
 			function messageKeyPressed(e) {
 				if(e.keyCode == 13) {
 					addSent();
 					sendmessage(document.getElementById('message').value);
+        			document.getElementById("message").value = "";
 					
 				}
 			};
@@ -69,14 +73,25 @@
 			}
 
 			div.yourText {
-	        color: #DA4167;
-	        font-size: 12pt;
-	        font-weight: normal;
-	        width: 50%;
-	        margin-left: 30px;
-	        margin-top: 10px;
-	        float: left;
-	    	}
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				color: black;	       
+		        font-weight: 100;
+/*		        width: 50%;
+*/		        /*margin-left: 30px;*/
+		       /* margin-top: 10px;*/
+		        text-align:  left;
+		    	}
+
+	    	div.theirText {
+	    		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		        color: #104e8b;
+		        font-size: 12pt;
+		        font-weight: 100;
+/*		        width: 50%;
+*/		        /*margin-left: 30px;*/
+		       /* margin-top: 10px;*/
+		        text-align:  left;
+		    	}
 
 			#messages {
 				font-family: "Century Gothic", sans-serif;
@@ -100,12 +115,12 @@
 				margin:0 auto;
 			}
 
-			#chatWindow {
+			/*#chatWindow {
 				text-align: left;
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				color: #104e8b;	
 				font-weight: 100;
-			}
+			}*/
 
 			#submit {
 				top: 50px;
@@ -122,9 +137,11 @@
 		 <div id="messages">
 		 Send a message
 		 </div>
+		 <div id="text"></div>
 		 <input type="text" id="message" name="message" placeholder="type message">
 	
-		<input type="send" id="submit" value="submit"  onclick ="sendmessage(document.getElementById('message').value);">
+		<input  id="submit" value="submit"  onclick ="sendmessage(document.getElementById('message').value);">
+
 		 <div id ="chatWindow"> </div>
 
 	</div>
