@@ -4,6 +4,8 @@
 		<script type="text/javascript">
 		
 			var socket = io.connect();
+			var counter = 0;
+			var incoming;
 			
 			socket.on('connect', function() {
 				console.log("Connected");
@@ -12,15 +14,51 @@
 			// Receive from any event
 			socket.on('chatmessage', function (data) {
 				console.log(data);
-				document.getElementById('chatWindow').innerHTML += data;
+				var previousMessages = document.getElementById('messages').innerHTML;
+				document.getElementById('chatWindow').innerHTML = document.getElementById('chatWindow').innerHTML + '</br>' + data;
 
 			});
+
+			window.addEventListener('load', init);
 			
 			var sendmessage = function(message) {
 				console.log("chatmessage: " + message);
 				socket.emit('chatmessage', message);
 			};
 
+			function addSent() {
+				counter++;
+				var div = document.createElement('div');
+				div.className = 'yourText';
+				div.id = "line" + counter;
+
+				document.getElementsByTagName('body')[0].appendChild(div);
+				document.getElementById(div.id).innerHTML = "<span id = 'me'>You</span>: " + document.getElementById('message').value;
+			}
+
+			function addReceived() {
+		        counter++;
+		        var div = document.createElement('div');
+		        div.className = 'theirText';
+		        div.id = "line " + counter;
+		        document.getElementsByTagName('body')[0].appendChild(div);
+		        document.getElementById(div.id).innerHTML = "<span id = 'them'>Them</span>: " +incoming;
+		    }
+
+			
+
+
+			function messageKeyPressed(e) {
+				if(e.keyCode == 13) {
+					addSent();
+					sendmessage(document.getElementById('message').value);
+					
+				}
+			};
+
+			function init() {
+				document.getElementById("message").addEventListener("keypress", messageKeyPressed);
+			};
 
 	
 		</script>	
@@ -30,12 +68,29 @@
 				background: #f2cac1;
 			}
 
+			div.yourText {
+	        color: #DA4167;
+	        font-size: 12pt;
+	        font-weight: normal;
+	        width: 50%;
+	        margin-left: 30px;
+	        margin-top: 10px;
+	        float: left;
+	    	}
+
 			#messages {
 				font-family: "Century Gothic", sans-serif;
 				color: #104e8b;
 				font-size: 30px;
 				font-weight: 300;
+				position: relative;
+				top: 50px;
 
+			}
+
+			#message {
+				position: relative;
+				top: 50px;
 			}
 
 			#page {
@@ -50,7 +105,12 @@
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				color: #104e8b;	
 				font-weight: 100;
-				
+			}
+
+			#submit {
+				top: 50px;
+				position: relative;
+			
 			}
 
 
@@ -64,8 +124,9 @@
 		 </div>
 		 <input type="text" id="message" name="message" placeholder="type message">
 	
-		<input type="send" value="submit"  onclick ="sendmessage(document.getElementById('message').value);">
+		<input type="send" id="submit" value="submit"  onclick ="sendmessage(document.getElementById('message').value);">
 		 <div id ="chatWindow"> </div>
+
 	</div>
  </body>
 </html>
