@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arthur</title>
+		<meta charset="UTF-8">
+		<script src="arthur.js" type="text/javascript"> </script>
+
+		<style>
+			body {
+				background-color: #66ff99;
+				padding:0;
+				margin:0;
+			}
+
+			h1 {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 200;
+/*				position: absolute;*/
+				left: 50%;
+				top: 80px;
+				font-size: 50px;
+			}
+			h2 {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 400;
+				position: absolute;
+				left: 30px;
+				font-size: 30px;
+
+			}
+
+			#introVid {
+				left: 50%;
+				top: 10%;
+				margin: auto;
+				border: none;
+			}
+
+			#videos {
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				/*opacity: 1;*/
+			}
+
+			#arthurDefault {
+				position: absolute;
+				right: 30px;
+				top: 100px;
+			}
+
+			#arthur1yr{
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				display: none;
+			}
+
+			#arthur3{
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				display: none;
+			}
+
+			#arthur5{
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				display: none;
+			}
+
+			#arthur6{
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				display: none;
+			}
+
+			button {
+				background: none;
+				border: none;
+				color: white;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 30px;
+				font-weight: 300;
+				cursor: pointer;
+			}
+
+			button:hover {
+				font-weight: 500;
+			}
+
+			#videolist button {
+				position: relative;
+				left: 30px;
+				top: 80px;
+			}
+			#signwithme {
+				display:block;
+				margin: 30px auto;
+				cursor: pointer;
+				border: none;
+			}
+
+			#backbutton {
+				left:30px;
+				color: #a1fdfd;
+				bottom: 10%;
+				position: absolute;
+			}
+
+			#Page1 {
+				width:100%;
+				height:700px;
+				text-align: center;
+				margin:0 auto;
+			}
+
+			li{
+				height: 60px;
+			}
+		</style>
+
+		
+
+	</head>
+
+
+<body onload="init()">
+	<div id="Page1">
+		<h1>Feliz Aniversario, Arthur!</h2>
+		<video id="introVid" width="640" height="360" autoplay loop src="videos/arthur1.mp4"></video>
+		<button id="signwithme">
+			Celebra 8 anos!
+		</button>	
+	</div>
+
+	<div id="Page2" style="display:none">
+
+		
+		<h2>Escolha uma edade</h2>
+
+		<ul id="videolist" style="list-style: none;">
+
+		<li><button id="lyric1" class="word">1 anos</button></li>
+		<li><button id="lyric2" class="word">2 anos</button></li>
+		<li><button id="lyric3" class="word">3 anos</button></li>
+		<li><button id="lyric4" class="word">4 anos</button></li>
+		<li><button id="lyric5" class="word">5 anos</button></li>
+		<li><button id="lyric6" class="word">6 anos</button></li>
+		<li><button id="lyric7" class="word">7 anos</button></li>
+		<li><button id="lyric8" class="word">8 anos!!</button></li>		
+		</ul>			
+		
+
+		<video id="videos" width="640" height="360"></video>
+
+
+		<div id="arthurDefault">
+			<img src="images/arthur1.jpg" width="300" height="400" border="none">
+		</div>
+		<!-- <div id="baby_portrait">
+			<img src="images/arthur1.jpg" width="300" height="400" border="none">
+		</div> -->
+
+		<div id="arthur1yr">
+			<img src="images/arthur1years.jpg" width="300" height="400" border="none">
+		</div>
+
+		<div id="arthur3">
+			<img src="images/arthur3years.jpg" width="300" height="400" border="none">
+		</div>
+
+		<div id="arthur5">
+			<img src="images/arthur5years.jpg" width="500" height="400" border="none">
+		</div>
+
+		<div id="arthur6">
+			<img src="images/arthur6years2.jpg" width="300" height="400" border="none">
+		</div>
+
+		<button id="backbutton">
+			Happy Birthday!
+		</button>
+
+	</div>	
+
+</body>
+
+
+
+</html>

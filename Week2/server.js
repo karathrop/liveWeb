@@ -39,7 +39,7 @@ var io = require('socket.io').listen(httpServer);
 io.sockets.on('connection', 
 	// We are given a websocket object in our function
 	function (socket) {
-	
+		var userId = socket.id;
 		console.log("We have a new client: " + socket.id);
 		
 		// When this user emits, client side: socket.emit('otherevent',some data);
