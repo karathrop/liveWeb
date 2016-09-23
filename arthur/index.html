@@ -31,7 +31,7 @@
 
 			}
 
-			#introVid {
+			#birthdayvid, #introVid {
 				left: 50%;
 				top: 10%;
 				margin: auto;
@@ -59,6 +59,13 @@
 			}
 
 			#arthur3{
+				position: absolute;
+				right: 30px;
+				top: 100px;
+				display: none;
+			}
+
+			#arthur4{
 				position: absolute;
 				right: 30px;
 				top: 100px;
@@ -98,7 +105,7 @@
 				left: 30px;
 				top: 80px;
 			}
-			#signwithme {
+			#backbuttonPage3, #signwithme {
 				display:block;
 				margin: 30px auto;
 				cursor: pointer;
@@ -112,7 +119,7 @@
 				position: absolute;
 			}
 
-			#Page1 {
+			#Page1, #Page3 {
 				width:100%;
 				height:700px;
 				text-align: center;
@@ -122,6 +129,16 @@
 			li{
 				height: 60px;
 			}
+
+			
+			#songbutton  {
+				right:30px;
+				color: #a1fdfd;
+				bottom: 10%;
+				position: absolute;
+			}
+
+
 		</style>
 
 		
@@ -130,18 +147,29 @@
 
 
 <body onload="init()">
+
 	<div id="Page1">
-		<h1>Feliz Aniversario, Arthur!</h2>
+		<h1>Feliz Aniversário, Arthur!</h1>
 		<video id="introVid" width="640" height="360" autoplay loop src="videos/arthur1.mp4"></video>
 		<button id="signwithme">
-			Celebra 8 anos!
+			Vamos relembrar seus 8 anos!
 		</button>	
+	</div>
+
+	<div id="Page3" style="display:none">
+		<h1>HAPPY BIRTHDAY, ARTHUR!</h1>
+		<video id="birthdayvid" width="640" height="360" loop src="spongebob.mp4"></video>
+
+		<button id="backbuttonPage3">
+			Happy Birthday!
+		</button>
+
 	</div>
 
 	<div id="Page2" style="display:none">
 
 		
-		<h2>Escolha uma edade</h2>
+		<h2>Escolha uma idade</h2>
 
 		<ul id="videolist" style="list-style: none;">
 
@@ -174,8 +202,12 @@
 			<img src="images/arthur3years.jpg" width="300" height="400" border="none">
 		</div>
 
+		<div id="arthur4">
+			<img src="images/arthur4.jpg" width="420" height="400" border="none">
+		</div>
+
 		<div id="arthur5">
-			<img src="images/arthur5years.jpg" width="500" height="400" border="none">
+			<img src="images/arthur5years.jpg" width="520" height="400" border="none">
 		</div>
 
 		<div id="arthur6">
@@ -186,7 +218,14 @@
 			Happy Birthday!
 		</button>
 
+		<button id="songbutton">
+			Birthday Song!
+		</button>
+
 	</div>	
+
+
+
 
 </body>
 
