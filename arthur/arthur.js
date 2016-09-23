@@ -33,12 +33,7 @@ function init() {
 				function playVideo(videoURL) {
 					videos.src= videoURL;
 					videos.innerHTML =""; //clear video tag
-					// var subt = document.createElement("track");
-					// subt.kind="subtitles";
-					// subt.src= subtitleURL;
-					// subt.default ="default";
-					// subt.srclang="en";
-					// videos.appendChild(subt);
+					
 					videos.play();
 					arthurDefault.style.display="none";
 					arthur1yr.style.display="none";
@@ -64,6 +59,7 @@ function init() {
 					arthur3.style.display="none";
 					arthur5.style.display="none";
 					arthur6.style.display="none"
+					arthur4.style.display="none"
 					videos.style.display="none";
 					this.style.color="#cffde5";
 					
