@@ -1,20 +1,22 @@
+
 var http = require('http');
 var fs = require('fs'); // Using the filesystem module
 var url = require('url');
+
 
 
 function onRequest(req, res) {
 	//console.log(req);
 
 	var parsedUrl = url.parse(req.url);
-	console.log("The request is: " + parsedUrl.pathname);
+	console.log("The Request is: " + parsedUrl.pathname);
 
-	// res.writeHead(200, {'Content-Type': 'text/plain'});
+	// res.writeHead(200, {'Content-Type': 'text/plain'});	
+	// res.end('You Requested ' + parsedUrl.pathname);
 
-	// res.end('Hellow World\n');
-
+	// Read in the file they requested
 	fs.readFile(__dirname + parsedUrl.pathname, 
-		// Callback function for reading
+		// Callback function, called when reading is complete
 		function (err, data) {
 			// if there is an error
 			if (err) {
@@ -26,18 +28,17 @@ function onRequest(req, res) {
 			res.end(data);
   		}
   	);
-
-
+	
 }
 
 var httpServer = http.createServer(onRequest);
-httpServer.listen(8081);
+httpServer.listen(8080);
 
 console.log("Server is running and waiting");
 
 // WebSocket Portion
 // WebSockets work with the HTTP server
-var socketio = require('socket.io').listen(httpServer);
+var socketio = require('socket.io');
 var io = socketio.listen(httpServer);
 
 // Register a callback function to run when we have an individual connection
@@ -60,13 +61,24 @@ io.sockets.on('connection',
 				//socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
-				io.sockets.emit('message', "this goes to everyone");
-			});
+				io.sockets.emit('message', data);
+			}
+		);
+		
+		// When this user emits, client side: socket.emit('otherevent',some data);
+		socket.on('otherevent', function(data) {
+			// Data comes in as whatever was sent, including objects
+			console.log("Received: 'otherevent' " + data);
 		});
 
-
-
-
-
-
-
+		socket.on('drawing', function(fooye) {
+			console.log(fooye);
+			io.sockets.emit('drawing', fooye);
+		});
+		
+		
+		socket.on('disconnect', function() {
+			console.log("Client has disconnected");
+		});
+	}
+);
