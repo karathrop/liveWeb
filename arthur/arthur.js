@@ -60,6 +60,7 @@ function init() {
 					arthur5.style.display="none";
 					arthur6.style.display="none"
 					arthur4.style.display="none"
+					arthur8.style.display="none";
 					videos.style.display="none";
 					this.style.color="#cffde5";
 					
@@ -72,7 +73,7 @@ function init() {
 					arthur3.style.display="none";
 					arthur5.style.display="none";
 					arthur6.style.display="none"
-					//videos.style.display="none";
+					arthur8.style.display="none";
 					this.style.color="#cffde5";
 					
 				});
@@ -83,6 +84,7 @@ function init() {
 					arthur1yr.style.display = "none";
 					arthur4.style.display = "none";	
 					videos.style.display="none";
+					arthur8.style.display="none";
 					this.style.color="#cffde5";
 				});
 
@@ -92,7 +94,8 @@ function init() {
 					arthur1yr.style.display="none";
 					arthur3.style.display="none";
 					arthur5.style.display="none";
-					arthur6.style.display="none";					
+					arthur6.style.display="none";
+					arthur8.style.display="none";					
 					this.style.color="#cffde5";
 				});
 				
@@ -102,7 +105,8 @@ function init() {
 					arthur1yr.style.display="none";
 					arthur3.style.display="none";
 					arthur6.style.display="none";
-					arthur4.style.display="none";					
+					arthur4.style.display="none";
+					arthur8.style.display="none";					
 					this.style.color="#cffde5";
 				});
 				lyric6.addEventListener("click", function()  {
@@ -112,11 +116,24 @@ function init() {
 					arthur3.style.display="none";
 					arthur4.style.display="none";
 					arthur5.style.display="none";
+					arthur8.style.display="none";
 					this.style.color="#cffde5";
 				});
 
 				lyric7.addEventListener("click", function()  {
 					playVideo("videos/arthur7.mp4");					
+					arthur1yr.style.display="none";
+					arthur3.style.display="none";
+					arthur5.style.display="none";
+					arthur4.style.display="none";
+					arthur6.style.display="none";
+					arthur8.style.display="none";
+					this.style.color="#cffde5";
+				});
+
+				lyric8.addEventListener("click", function()  {
+					arthur8.style.display="block";
+					videos.style.display="none";					
 					arthur1yr.style.display="none";
 					arthur3.style.display="none";
 					arthur5.style.display="none";
