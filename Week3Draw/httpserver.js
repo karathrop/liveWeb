@@ -1,3 +1,5 @@
+
+// HTTP Portion
 var http = require('http');
 var fs = require('fs'); // Using the filesystem module
 var httpServer = http.createServer(requestHandler);
@@ -22,11 +24,6 @@ function requestHandler(req, res) {
 			res.end(data);
   		}
   	);
-  	
-  	/*
-  	res.writeHead(200);
-  	res.end("Life is wonderful");
-  	*/
 }
 
 
@@ -43,13 +40,12 @@ io.sockets.on('connection',
 		console.log("We have a new client: " + socket.id);
 		
 		// When this user emits, client side: socket.emit('otherevent',some data);
-		socket.on('chatmessage', function(data) {
+		socket.on('othermouse', function(data) {
 			// Data comes in as whatever was sent, including objects
-			console.log("Received: 'chatmessage' " + data);
+			console.log("Received: 'othermouse' " + data.x + " " + data.y);
 			
 			// Send it to all of the clients
-			// socket.broadcast.emit('chatmessage', data);
-			io.sockets.emit('chatmessage', data);
+			socket.broadcast.emit('othermouse', data);
 		});
 		
 		

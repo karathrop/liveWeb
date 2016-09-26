@@ -1,0 +1,252 @@
+<html>
+		<head>
+
+			<style>
+
+			body {
+				margin: 0;
+				font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+				width:100%;
+				height:700px;
+				text-align: center;
+				margin:0 auto;
+				background-color: white;
+				
+			}
+
+
+			#mycanvas{
+				background-color: #eeeeee;
+				left: 100px;
+				
+			}
+			h1{
+				background-color: white;
+				color:black;
+				font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+				border: 10px solid white;
+				text-align: center;
+			}
+
+			#me {
+		        margin: 0;
+		        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+		        color: #FFFFFF;
+		        font-size: 13pt;
+		        background-color: #3b5998;
+   			}
+    
+		    #other {
+		        margin: 0;
+		        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+		        color: #FFFFFF;
+		        font-size: 13pt;
+		        background-color: #a0db8e;
+		    }
+
+		    #text {
+		    	margin: 0;
+		        font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+		        color: #FFFFFF;
+		        font-size: 13pt;
+		        background-color: #3b5998;
+		        text-align: left;
+		        width: 400px;
+		    }
+    
+			#textInput{
+				position: relative;
+				left: 35%;
+				top: 10px;
+				width: 400px;
+				height: 50px;				
+			}
+			div.yourText {
+	 	       	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		        color: #104e8b;
+	 	        width: 50px;	 	        
+	 	        margin-left: 30px;
+	 	        margin-top: 10px;
+	 	        float: left;
+	 	        
+	 	     }
+
+ 	    	div.theirText {
+ 	    		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		        color: green;
+		        font-size: 12pt;
+		        font-weight: 100;
+	 	        width: 50px;
+	 	        margin-left: 30px;
+	 	        margin-top: 10px;
+	 	        float: left;
+	 	        
+	 	        
+ 	    	}
+
+			</style>
+
+			<script src="/socket.io/socket.io.js"></script>
+			<script type="text/javascript">
+
+				var socket = io.connect();
+				var counter = 0;
+				var incoming;
+
+		
+				//drawing
+				var context;
+				var canvas;
+				var mouseIsDown = false;
+				var col='hsl(' + 360 * Math.random() + ', 50%, 50%)';
+
+				
+				var clientID;
+
+				//chat
+				var submitButton;
+				
+				var messages;
+				var message;
+
+				
+
+				socket.on('connect', function() {
+					console.log("Connected");
+					clientID = socket.io.engine.id;
+					console.log("My client id: " + clientID);
+
+					//we send our client id back to the server
+					socket.emit('client', clientID);
+
+				});
+
+				//checking to see if our client is already connected
+	  			//if not (if it's a newly connected), add new div with all data
+	  			socket.on('client', function (data){
+	  				//create a div only if is a new user
+	  				for (var i=0; i < data.length; i++){
+	  					if (document.getElementById(data[i])==null){
+	  					console.log("userlist "+data[i]);
+	  					}
+	  				}
+	  			});
+
+				//drawing
+				socket.on('mousemove',function(data){
+					console.log(data);
+
+					context.arc(data.x,data.y,10,0,2*Math.PI);
+					context.fillStyle = data.col;
+					context.fill();
+					context.closePath();
+				}); 
+
+				//dear god i love learning
+				// chat // accepting from all events
+				socket.on('chatmessage', function (data) {
+					console.log(data);
+					var previousMessages = document.getElementById('messages').innerHTML;
+					console.log(previousMessages);
+					document.getElementById('text').innerHTML = document.getElementById('text').innerHTML + '<br>' + data;
+					incoming=data;	
+					addReceived();
+ 					;
+ 				});
+
+ 				window.addEventListener('load', init);
+
+				// --------- END OF SOCKETS
+
+	  			//sending messages
+	  			var sendmessage = function(message) {
+					console.log("chatmessage: " + message);
+					socket.emit('chatmessage', message);
+				};
+
+				function addSent() {
+					counter++;
+					var div = document.createElement('div');
+					div.className = 'yourText';
+					div.id = "line" + counter;
+
+					document.getElementsByTagName('body')[0].appendChild(div);
+					document.getElementById(div.id).innerHTML = "<span id = 'me'>You</span>: " +  document.getElementById('message').value ;
+				}
+
+				function addReceived() {
+			        counter++;
+			        var div = document.createElement('div');
+			        div.className = 'theirText';
+			        div.id = "line " + counter;
+			        document.getElementsByTagName('body')[0].appendChild(div);
+			        document.getElementById(div.id).innerHTML = "<span id = 'other'>Other</span>: " +incoming;
+			    }
+
+				function messageKeyPressed(e) {
+					if(e.keyCode == 13) {
+						addSent();
+						sendmessage(document.getElementById('message').value);
+	        			document.getElementById("message").value = "";
+						
+					}
+				};
+
+				
+				//drawing
+				function init() {
+
+					document.getElementById("message").addEventListener("keypress", messageKeyPressed);
+					
+					canvas = document.getElementById('mycanvas');
+					context = canvas.getContext('2d');
+
+					canvas.addEventListener('mousedown',function(evt){ //mousedragged turi cia buti
+						mouseIsDown = true;
+						console.log(evt);
+						col='hsl(' + 360 * Math.random() + ', 50%, 50%)'; 
+
+					});
+
+					canvas.addEventListener('mousemove', function(evt){
+						var canvasRect = canvas.getBoundingClientRect();
+						if (mouseIsDown === true){
+							console.log(evt);
+							context.beginPath();
+							context.arc(evt.clientX-canvasRect.left,evt.clientY-canvasRect.top,10,0,2*Math.PI);
+							context.fillStyle = col;
+							context.fill();
+							context.closePath();
+
+							var drawingobj = {x:evt.clientX-canvasRect.left, y:evt.clientY-canvasRect.top, col};
+
+							socket.emit('mousemove',drawingobj);
+						}
+
+							});
+
+							canvas.addEventListener('mouseup', function(evt){
+								mouseIsDown = false;
+							});
+
+
+						}
+
+				window.addEventListener('load',init);
+
+		
+			</script>	
+		</head>
+	 <body>
+	 		
+		 		<h1>Let's paint!</h1>
+		 		<div id ="textInput">
+			 		<input type="text" id="message" name="message" placeholder="type message" >
+			 		<input  id="submit" value="submit"  onclick ="sendmessage(document.getElementById('message').value);">
+		 	
+		 		<canvas width="600" height="450" id="mycanvas"></canvas>
+		 		<div id ="text"> </div>
+		
+		 	</div>
+	 </body>
+</html>
