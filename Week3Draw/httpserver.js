@@ -47,7 +47,7 @@ io.sockets.on('connection',
 				console.log("message: " + data);
 				
 				// Call "broadcast" to send it to all clients (except sender), this is equal to
-				// socket.broadcast.emit('message', data);
+				socket.broadcast.emit('message', data);
 				socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
