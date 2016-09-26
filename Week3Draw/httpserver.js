@@ -51,7 +51,7 @@ io.sockets.on('connection',
 				socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
-				// io.sockets.emit('message', "this goes to everyone");
+				io.sockets.emit('message', "this goes to everyone");
 			}
 		);
 		
