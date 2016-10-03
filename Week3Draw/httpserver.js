@@ -1,18 +1,22 @@
 
-// HTTP Portion
 var http = require('http');
 var fs = require('fs'); // Using the filesystem module
-var httpServer = http.createServer(requestHandler);
 var url = require('url');
-httpServer.listen(8080);
 
-function requestHandler(req, res) {
+
+
+function onRequest(req, res) {
+	//console.log(req);
 
 	var parsedUrl = url.parse(req.url);
 	console.log("The Request is: " + parsedUrl.pathname);
-		
+
+	// res.writeHead(200, {'Content-Type': 'text/plain'});	
+	// res.end('You Requested ' + parsedUrl.pathname);
+
+	// Read in the file they requested
 	fs.readFile(__dirname + parsedUrl.pathname, 
-		// Callback function for reading
+		// Callback function, called when reading is complete
 		function (err, data) {
 			// if there is an error
 			if (err) {
@@ -24,12 +28,18 @@ function requestHandler(req, res) {
 			res.end(data);
   		}
   	);
+	
 }
 
+var httpServer = http.createServer(onRequest);
+httpServer.listen(8081);
+
+console.log("Server is running and waiting");
 
 // WebSocket Portion
 // WebSockets work with the HTTP server
-var io = require('socket.io').listen(httpServer);
+var socketio = require('socket.io');
+var io = socketio.listen(httpServer);
 
 // Register a callback function to run when we have an individual connection
 // This is run for each individual user that connects
@@ -47,11 +57,11 @@ io.sockets.on('connection',
 				console.log("message: " + data);
 				
 				// Call "broadcast" to send it to all clients (except sender), this is equal to
-				socket.broadcast.emit('message', data);
-				socket.broadcast.send(data);
+				// socket.broadcast.emit('message', data);
+				//socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
-				io.sockets.emit('message', "this goes to everyone");
+				io.sockets.emit('message', data);
 			}
 		);
 		
@@ -60,6 +70,11 @@ io.sockets.on('connection',
 			// Data comes in as whatever was sent, including objects
 			console.log("Received: 'otherevent' " + data);
 		});
+
+		socket.on('drawing', function(fooye) {
+			console.log(fooye);
+			io.sockets.emit('drawing', fooye);
+		});
 		
 		
 		socket.on('disconnect', function() {
@@ -67,3 +82,7 @@ io.sockets.on('connection',
 		});
 	}
 );
+
+
+
+
