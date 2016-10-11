@@ -3,19 +3,29 @@ var http = require('https');
 var fs = require('fs');
 var PeerServer = require('peer').PeerServer;
 var url =  require('url');
-var options = {
-	key: fs.readFileSync('my-key.pem'),
-	cert: fs.readFileSync('my-cert.pem')
-};
+
 var server = PeerServer({
   port: 9000,
-  ssl: options
+  ssl: {
+    key: fs.readFileSync('your.key'),
+    cert: fs.readFileSync('your.crt')
+  }
 });
+
+var options = {
+  key: fs.readFileSync('my-key.pem'),
+  cert: fs.readFileSync('my-cert.pem')
+};
 
 
 // http://nodejs.org/api/http.html#http_event_request
 function handleIt(req, res) {
 	console.log("The URL is: " + req.url);
+
+	//req is an IncominMessage: http://nodejs.org/api/http.html#http_http_incomingmessage
+	//res is a ServerResponse: http://nodejs.org/api/http.html#http_class_http_serverresponse
+	//res.writeHead(200, {'Content-Type': 'text/html'});
+	//res.end('<html><body><b>Hello World</b></body></html>\n');
 
 	var parsedUrl = url.parse(req.url);
 	console.log("They asked for " + parsedUrl.pathname);
@@ -68,6 +78,8 @@ var io = require('socket.io').listen(httpServer);
 io.sockets.on('connection', 
 	// We are given a websocket object in our function
 	function (socket) {
+	
+
 		console.log("We have a new client: " + socket.id);
 		
 		socket.on('peerid', function(data) {
@@ -75,44 +87,37 @@ io.sockets.on('connection',
 			socket.broadcast.emit('peerid', data);
 
 			for (var c = 0; c < clients.length; c++) {
-				socket.emit('peerid',clients[c].peerId);
+				socket.emit('peerid',clients[c]);
 			}
 
-			clients.push({socketId:socket.id, peerId:data});
-			console.log("#############")
-			console.log(clients);
-			console.log("#############")
-		});
-
-		socket.on('message', function (data) {
-				console.log("message: " + data);
-			
-			// Call "broadcast" to send it to all clients (except sender), this is equal to
-			// socket.broadcast.emit('message', data);
-			//socket.broadcast.send(data);
-			
-			// To all clients, on io.sockets instead
-			io.sockets.emit('message', data);
-		});
+			clients.push(data);
+			});
+			socket.on('message', 
+				// Run this function when a message is sent
+				function (data) {
+					console.log("message: " + data);
+				
+				// Call "broadcast" to send it to all clients (except sender), this is equal to
+				//socket.broadcast.emit('message', data);
+				//socket.broadcast.send(data);
+				
+				// To all clients, on io.sockets instead
+				io.sockets.emit('message', data);
+			}
+			);
 			// When this user emits, client side: socket.emit('otherevent',some data);
-		socket.on('otherevent', function(data) {
-			// Data comes in as whatever was sent, including objects
-			console.log("Received: 'otherevent' " + data);
-		});
+			socket.on('otherevent', function(data) {
+				// Data comes in as whatever was sent, including objects
+				console.log("Received: 'otherevent' " + data);
+			});
 
-		socket.on('drawing', function(data) {
-			console.log(data);
+			socket.on('drawing', function(data) {
+			console.log(data;
 			io.sockets.emit('drawing', data);
-		});
+			});
 
-		socket.on('disconnect', function() {
-			console.log("Client has disconnected", socket.id);
-			for (var c = 0; c < clients.length; c++) {
-				if(clients[c].socketId == socket.id) {
-					io.sockets.emit('disconnect', clients[c].peerId);		
-				}
-			}
-			
-		});		
+			socket.on('disconnect', function() {
+			console.log("Client has disconnected");
+			});		
 	}
 );
