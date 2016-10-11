@@ -1,58 +1,7 @@
-body{
-	background-color: grey; /*#FF6FFF *//*#00FA9A /*#00B7EB*/
-}
-canvas{
-	background-color: white;
-	border: 3px solid white;
-}
-h1{
-	color:white;
-	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-	text-decoration:none;
-	/*margin-top:20;*/
-}
-#thevideo{
-	visibility: hidden;
-	position:absolute;
-	margin-left:150;
-}
-#othercanvas{
-/*	visibility: hidden;
-*/	width: 400;
-	height:300;
-}
-/*#video{
-	width:100;
-	position:absolute;
-	margin-left:150;
-	margin-top:100;
-}*/
-#message{
-	position: absolute;
-	top: 210px;
-	width: 200;
+h1 {
+  text-align: center
 }
 
-#main{
-	position: absolute;
-	top: 0px;
-}
-#user-input{
-	position:absolute;
-	margin-left:1100;
-	margin-top:0;
-}
-#submit-message{
-	position: relative;
-	top: 212px;
-	left: 210px;
-}
-#messages{
-	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-	color:white;
-	position: absolute;
-	top: 235px;
-}
-#othervideo{
-	width:200;
+.col-sm-4 {
+	
 }
