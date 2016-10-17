@@ -1,0 +1,22 @@
+body {
+    background-color: grey;
+    font-family: 'Inconsolata', monospace;
+}
+
+#thevideo {
+/*	visibility: hidden; 
+*/}
+
+#thecanvas {
+	visibility: hidden;
+}
+
+input[type=submit], .submitbutton{
+	cursor: pointer;
+	font-family: 'Inconsolata', monospace
+	
+}
+
+input[type=text] {
+	font-family: 'Inconsolata', monospace;
+}
