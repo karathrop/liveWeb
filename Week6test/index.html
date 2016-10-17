@@ -40,8 +40,8 @@
   			// define media sources for the divs created in socket.on('client', ...)
   			//there are empty src left to be able to push new data
   			socket.on('allinfo', function(data){
-  				document.getElementById('img'+data.id).src=data.image;
-  				document.getElementById('text'+data.id).innerHTML=data.text;
+  				document.getElementById('img').src=data.image;
+  				document.getElementById('text').innerHTML=data.text;
 
   			});
 			function init(){
@@ -67,6 +67,13 @@
 				};
 				draw();	
 			}
+
+				//chat
+			// 	submitButton = document.getElementById("submit-message");
+			// 	submitButton.addEventListener('click', submitClicked);
+
+			// }
+			
 			window.addEventListener('load',init);
 			// on submission, capture current frame into dataUrl
 			// and emit that and the text in id='message' to the
@@ -98,6 +105,8 @@
 			<input id='submit-message' type='submit' class='submitbutton' value='Send Message' onclick='submitClicked()'>		
 			<br/>
 			<br/>
+			<img id="img" width="500" alt="" height="500" src=" " style="border:none !important;" border="0"></img>
+          	<div id="text"></div>
 		</div>
 		<video id="thevideo" width="310" height="240"></video>
 		<canvas id="thecanvas" width="310" height="240"></canvas>

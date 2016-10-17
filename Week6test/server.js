@@ -55,33 +55,27 @@ io.sockets.on('connection',
 	
 		// When this user "send" from clientside javascript, we get a "message"
 		// client side: socket.send("the message");  or socket.emit('message', "the message");
-		// socket.on('message', 
+		socket.on('allinfo', 
 			// Run this function when a message is sent
-			// function (data) {
-			// 	console.log("message: " + data);
-
-		socket.on('message', function (data) {
-				console.log("message: " + data);
+			function (data) {
+				console.log("allinfo: " + data);
 				
 				// Call "broadcast" to send it to all clients (except sender), this is equal to
 				// socket.broadcast.emit('message', data);
 				//socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
-				io.sockets.emit('message', data);
+				io.sockets.emit('allinfo', data);
 			}
 		);
 		
 		// When this user emits, client side: socket.emit('otherevent',some data);
-		socket.on('overevent', function(data) {
+		socket.on('otherevent', function(data) {
 			// Data comes in as whatever was sent, including objects
-			console.log("Received: 'otherever' " + data);
+			console.log("Received: 'otherevent' " + data);
 		});
 
-		// socket.on('drawing', function(fooye) {
-		// 	console.log(fooye);
-		// 	io.sockets.emit('drawing', fooye);
-		// });
+	
 		
 		
 		socket.on('disconnect', function() {
@@ -89,5 +83,8 @@ io.sockets.on('connection',
 		});
 	}
 );
+
+
+
 
 

@@ -4,8 +4,8 @@ body {
 }
 
 #thevideo {
-/*	visibility: hidden; 
-*/}
+	visibility: hidden;
+}
 
 #thecanvas {
 	visibility: hidden;
@@ -14,7 +14,7 @@ body {
 input[type=submit], .submitbutton{
 	cursor: pointer;
 	font-family: 'Inconsolata', monospace
-	
+
 }
 
 input[type=text] {
