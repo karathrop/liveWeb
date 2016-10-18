@@ -1,23 +1,3 @@
-<html>
-	<html lang="en">
-	<head>
-		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-		<!-- <link type='text/css' rel='stylesheet' href='style.css'></link>  --><!-- put all css in this file -->
-		 <title>Midterm Test</title>
-
-		 <link href="css/bootstrap.min.css" rel="stylesheet">
-		 <link type='text/css' rel='stylesheet' href='style.css'></link>
-		 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		 <script src="peer.min.js"></script>
-		  
-		
-
-		
-		 	<script type="text/javascript">
-
 			var socket = io.connect();
 
 			//drawing
@@ -229,49 +209,3 @@
 
 			}
 		}
-	
-		</script>	
-
-	
-	</head>
-		 
-		
-		
-			
- 	<body>
- 		
-		  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	 		<script src="js/bootstrap.min.js"></script>
-	 	<div class="row">
-	 		<div class="col-md-4" "text-center">
-	 			<h1>A very serious 
-	 				<small>chat</small>
-	 			</h1>
-	 		</div>
- 		</div>
- 			<!-- <script type="text/javascript" src="/main.js"></script>	 -->
-		  	
-
-	 	
-
-	 	<div class= "row">
-	 		<div class="col-sm-4">
-		 		<video id="thevideo" muted="muted" width="150" ></video><br/>
-		 		<video id="othervideo" muted="muted" width="150" ></video>
-		 		<!-- <canvas  id="mycanvas"></canvas> -->
-		 		<div id = "user-input" align="right">	
-	 			<input id='message' name='message' type='text' class='textarea' onKeyPress='return enter(event)'>
-				<input id='submit-message' type='submit' class='submitbutton' value='submit' align="right">
-	 			<br></br>
-	 			<div id="messages" align='center'>
-	 			</div>
-		 	</div>
-		 </div>
-
-		 	<div id = "main">
-		 		
- 			
- 		</div>
- 	</div>
- </body>
-</html>

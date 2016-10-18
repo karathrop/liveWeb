@@ -1,22 +1,46 @@
 body {
-    background-color: grey;
-    font-family: 'Inconsolata', monospace;
+   background-color: #fff;
+   @grid-columns: 12;
+	@grid-gutter-width: 30px;
+	@grid-float-breakpoint:768px;
+
+    
 }
 
 #thevideo {
 	visibility: hidden;
+	text-align: center;
 }
 
 #thecanvas {
 	visibility: hidden;
+	text-align: center;
 }
 
 input[type=submit], .submitbutton{
 	cursor: pointer;
-	font-family: 'Inconsolata', monospace
+	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+	
 
 }
 
 input[type=text] {
-	font-family: 'Inconsolata', monospace;
+	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+}
+
+h1 {
+	text-align: center;
+}
+
+
+
+.pull-right {
+	margin-border: 10px;
+}
+
+
+.pull-left {
+	margin-border: 10px;
 }

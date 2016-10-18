@@ -55,17 +55,17 @@ io.sockets.on('connection',
 	
 		// When this user "send" from clientside javascript, we get a "message"
 		// client side: socket.send("the message");  or socket.emit('message', "the message");
-		socket.on('allinfo', 
+		socket.on('textandpic', 
 			// Run this function when a message is sent
 			function (data) {
-				console.log("allinfo: " + data);
+				console.log("textandpic: " + data);
 				
 				// Call "broadcast" to send it to all clients (except sender), this is equal to
 				// socket.broadcast.emit('message', data);
 				//socket.broadcast.send(data);
 				
 				// To all clients, on io.sockets instead
-				io.sockets.emit('allinfo', data);
+				io.sockets.emit('textandpic', data);
 			}
 		);
 		
