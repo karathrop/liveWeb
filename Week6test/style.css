@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
    background-color: #fff;
    @grid-columns: 12;
 	@grid-gutter-width: 30px;
@@ -15,10 +16,23 @@ body {
 #thecanvas {
 	visibility: hidden;
 	text-align: center;
+=======
+    background-color: grey;
+    font-family: 'Inconsolata', monospace;
+}
+
+#thevideo {
+/*	visibility: hidden; 
+*/}
+
+#thecanvas {
+	visibility: hidden;
+>>>>>>> origin/gh-pages
 }
 
 input[type=submit], .submitbutton{
 	cursor: pointer;
+<<<<<<< HEAD
 	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 	
 	
@@ -44,3 +58,12 @@ h1 {
 .pull-left {
 	margin-border: 10px;
 }
+=======
+	font-family: 'Inconsolata', monospace
+	
+}
+
+input[type=text] {
+	font-family: 'Inconsolata', monospace;
+}
+>>>>>>> origin/gh-pages
