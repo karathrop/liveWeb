@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil|Fredericka+the+Great|Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil|Fredericka+the+Great|Marvel|Open+Sans+Condensed:300');
+
 body {
-<<<<<<< HEAD
-   background-color: #fff;
+
+   background-color: #ef9a9a;
    @grid-columns: 12;
 	@grid-gutter-width: 30px;
 	@grid-float-breakpoint:768px;
@@ -16,9 +19,8 @@ body {
 #thecanvas {
 	visibility: hidden;
 	text-align: center;
-=======
     background-color: grey;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Marvel', sans-serif;
 }
 
 #thevideo {
@@ -26,26 +28,28 @@ body {
 */}
 
 #thecanvas {
-	visibility: hidden;
->>>>>>> origin/gh-pages
+	/*visibility: hidden;*/
+
 }
 
 input[type=submit], .submitbutton{
 	cursor: pointer;
-<<<<<<< HEAD
-	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	font-family: 'Marvel', sans-serif;
 	
 	
 
 }
-
+/*
 input[type=text] {
-	@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 	
-}
+	
+}*/
 
 h1 {
 	text-align: center;
+	font-family: 'Fredericka the Great', cursive;
+	color: #263238;
 }
 
 
@@ -58,12 +62,20 @@ h1 {
 .pull-left {
 	margin-border: 10px;
 }
-=======
-	font-family: 'Inconsolata', monospace
-	
+
+#text {
+	font-family: 'Marvel', sans-serif;
 }
 
 input[type=text] {
-	font-family: 'Inconsolata', monospace;
+	font-family: 'Marvel', sans-serif;
 }
->>>>>>> origin/gh-pages
+
+#submit-message {
+	font-family: 'Marvel', sans-serif;
+	color: #616161;
+}
+
+.btn-default {
+	color: #37474f;
+}
