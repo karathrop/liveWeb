@@ -35,12 +35,12 @@
   					console.log("userlist "+ data[i]);
   					// add new div with id, picture and message of each connected user
   					//we repeat document.getElementById because it would replace the same before
-  					document.getElementById('box').innerHTML = document.getElementById('box').innerHTML+'<div id="'+data[i]+'" style="float:left; border-width:2px; border-style: solid; border-color: transparent;"> <img id="img'+data[i]+'" src="">';
+  					document.getElementById('box').innerHTML = document.getElementById('box').innerHTML+'<div id="'+data[i]+'" style="float:left; border-width:2px; border-style: solid; border-color: transparent;"> <img id="img'+data[i]+'" src=""><div id="text'+data[i]+'"></div> </div>';
   					}
   				}
   			});
 
-  			//<div id="text'+data[i]+'"></div> </div>
+  			// <div id="text'+data[i]+'"></div> </div>
   			
   			socket.on('userdisconnected', function(data){
   				// remove all children that are ID'd by the socket.id coming in as "data"
@@ -50,8 +50,10 @@
   			//there are empty src left to be able to push new data
   			socket.on('textandpic', function(data){
   				document.getElementById('img').src=data.image;
+  				console.log("new message:", data);
   				var previousMessages = document.getElementById('text').innerHTML;
-  				document.getElementById('text').innerHTML=data.text;
+  				// document.getElementById('text').innerHTML=data.text;
+  				document.getElementById('text').innerHTML = previousMessages + '<br>' + data.text;
 
   			});
 
@@ -91,14 +93,20 @@
 			function submitClicked(){
 				
 				dataUrl = thecanvas.toDataURL('image/webp', 1);
-				var newMessage = document.getElementById("message").value;
+				// var newMessage = document.getElementById("message").value;
+				var newMessage = document.getElementById('message').value;
+				sendmessage(newMessage);
 
 				console.log("clicked")
 				//going from this client to the server
+				// socket.emit('textandpic',{
+				// 	image:dataUrl, 
+				// 	text:newMessage});
 				socket.emit('textandpic',{
-					image:dataUrl, 
-					text:newMessage});
-				sendmessage(newMessage);
+					image:dataUrl,
+					text:newMessage
+					});
+				
 
 			}
 
