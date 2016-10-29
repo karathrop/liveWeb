@@ -3,7 +3,8 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="peer.min.js"></script>
+    <script src="http://itp.nyu.edu/~sve204/liveweb_fall2016/peer.min.js"></script>
+
     <script type="text/javascript">
     var counter = 0;
     var mypeerid = null;
@@ -12,7 +13,7 @@
     var incoming;
     var init = function() {
         peer = new Peer({
-            host: 'liveweb.itp.io',
+            host: 'kcl389.itp.io',
             port: 9001,
             path: '/'
         });
@@ -68,8 +69,8 @@
         ovideoElement.src = window.URL.createObjectURL(remoteStream) || remoteStream;
         ovideoElement.setAttribute("autoplay", "true");     
         ovideoElement.play();
+        });
     });
-});
     };
     var placecall = function() {
         connection = peer.connect(document.getElementById('other_peer_id').value);
