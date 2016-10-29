@@ -40,7 +40,6 @@
   				}
   			});
 
-  			// <div id="text'+data[i]+'"></div> </div>
   			
   			socket.on('userdisconnected', function(data){
   				// remove all children that are ID'd by the socket.id coming in as "data"
@@ -99,9 +98,7 @@
 
 				console.log("clicked")
 				//going from this client to the server
-				// socket.emit('textandpic',{
-				// 	image:dataUrl, 
-				// 	text:newMessage});
+				
 				socket.emit('textandpic',{
 					image:dataUrl,
 					text:newMessage

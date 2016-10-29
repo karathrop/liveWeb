@@ -1,10 +1,18 @@
 <html>
+	<html lang="en">
 	<head>
-		<link type='text/css' rel='stylesheet' href='style.css'></link> <!-- put all css in this file -->
-		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		<script src="peer.min.js"></script>
-		
-		<script type="text/javascript">
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<!-- <link type='text/css' rel='stylesheet' href='style.css'></link>  --><!-- put all css in this file -->
+		 <title>Midterm Test</title>
+
+		 <link href="css/bootstrap.min.css" rel="stylesheet">
+		 <link type='text/css' rel='stylesheet' href='style.css'></link>
+		 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		 <script src="peer.min.js"></script>j	
+		 	<script type="text/javascript">
 
 			var socket = io.connect();
 
@@ -19,13 +27,6 @@
 			var thecontext;
 			var othervideo;
 			
-
-			//chat
-			var submitButton;
-			var userinput;
-			var messages;
-			var message;
-
 			//video
 			// We'll use a global variable to hold on to our id from PeerJS
 			var peer_id = null;
@@ -63,23 +64,6 @@
 				context.closePath();
 			});
 
-			// chat // accepting from all events
-			socket.on('message', function (data) {
-				console.log("new message:", data);
-				var previousMessages = document.getElementById('messages').innerHTML;
-				document.getElementById('messages').innerHTML = previousMessages + '<br>' + data;
-			});
-
-			// --------- END OF SOCKETS
-
-  			//sending messages
-  			var sendmessage = function(message) {
-  				console.log("sending message", message);
-				socket.emit('message', message);
-			};
-
-			
-			//drawing
 			function init() {
 				//get video streaming from each user and play it on their browser
 				window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
@@ -114,22 +98,6 @@
 
 				});
 
-				canvas.addEventListener('mousemove', function(evt){
-					var canvasRect = canvas.getBoundingClientRect();
-					if (mouseIsDown === true){
-						console.log(evt);
-						context.beginPath();
-						context.arc(evt.clientX-canvasRect.left,evt.clientY-canvasRect.top,10,0,2*Math.PI);
-						context.fillStyle = col;
-						context.fill();
-						context.closePath();
-
-						var drawingobj = {x:evt.clientX-canvasRect.left, y:evt.clientY-canvasRect.top, col};
-
-						socket.emit('drawing',drawingobj);
-					}
-
-				});
 
 				canvas.addEventListener('mouseup', function(evt){
 					mouseIsDown = false;
@@ -207,43 +175,32 @@
 				//var idToCall = document.getElementById('tocall').value;
 				console.log("peer: " + peer);
 				var call = peer.call(idToCall, my_stream);
-				console.log("made a call: " + call);
-
-				// call.on('stream', function(remoteStream) {
-				// 	console.log("Got remote stream");
-				// 	var ovideoElement = document.createElement('video');
-				// 	ovideoElement.style.width = '150';
-				// 	ovideoElement.src = window.URL.createObjectURL(remoteStream) || remoteStream;
-				// 	ovideoElement.setAttribute("autoplay", "true");
-				// 	ovideoElement.play();
-				// 	document.body.appendChild(ovideoElement);
-				// });
+				console.log("made a call: " + call);		
 
 			}
 		}
 	
-		</script>	
-	</head>
- <body>
-
- 	<div id='header'>
- 		<h1>Let's Chat</h1>
- 	</div>
-
- 	
- 	<video id="thevideo" muted="muted" width="150" ></video><br/>
-
- 	<div id = "main">
- 		<div id = "user-input" align="right">
- 			<!-- <textarea id="message" name="message" type="text" class="textarea">Enter your message and see full chat below!</textarea>
- 			<input id ="submit-message" type="submit" value="submit"> -->
-
- 			<input id='message' name='message' type='text' class='textarea' onKeyPress='return enter(event)'>
-			<input id='submit-message' type='submit' class='submitbutton' value='submit' align="right">
- 			<br></br>
- 			<div id="messages" align='center'>
- 			</div>
- 			<canvas  id="mycanvas"></canvas>
+		</script>		
+	</head>					
+ 	<body>
+ 		
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 		<script src="js/bootstrap.min.js"></script>
+	 	<div class="row">
+	 		<div class="col-md-4" "text-center">
+	 			<h1>Who  
+	 				<small>is your dinner guest?</small>
+	 			</h1>
+	 		</div>
+ 		</div>
+	 	<div class= "row">
+	 		<div class="col-sm-4">
+		 		<video id="thevideo" muted="muted" width="150" ></video><br/>
+		 		<video id="othervideo" muted="muted" width="150" ></video>
+	 			</div>
+		 	</div>
+		 </div>
+		 	<div id = "main">			
  		</div>
  	</div>
  </body>

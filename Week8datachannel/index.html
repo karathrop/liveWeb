@@ -1,0 +1,163 @@
+<html>
+	<head>
+		<link type='text/css' rel='stylesheet' href='style.css'></link>
+
+		<script src="http://itp.nyu.edu/~sve204/liveweb_fall2016/peer.min.js"></script>
+		
+		<script type="text/javascript">
+			var mypeerid = null;
+			var peer = null;
+			var connection = null;
+
+				//video
+			var clientID;
+			var video;
+			var clientList;
+			var dataURL;
+			var othercanvas;
+			var thecontext;
+			var othervideo;
+
+				//chat
+			var submitButton;
+			var userinput;
+			var messages;
+			var message;
+
+			//video
+			// We'll use a global variable to hold on to our id from PeerJS
+			var peer_id = null;
+			var peer = null;
+			var my_stream = null; // getUserMedia
+			
+			
+				peer = new Peer('kc' {host: 'liveweb.itp.io', port: 9001, path: '/'});
+				
+				peer.on('open', function(id) {
+				  console.log('My peer ID is: ' + id);
+				  mypeerid = id;
+				});
+				
+				peer.on('connection', function(conn) {
+					connection = conn;
+					connection.on('open', function() {
+						document.getElementById('chatlog').innerHTML += "Connection Established";
+					});
+					connection.on('data', function(data) {
+						document.getElementById('chatlog').innerHTML += data;
+					});
+				});
+			};	
+
+
+			function init() {
+				//get video streaming from each user and play it on their browser
+				window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+				navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+				thevideo=document.getElementById("thevideo");
+				othervideo=document.getElementById("othervideo");
+
+				
+				//video is not hidden, so we see it
+				if (navigator.getUserMedia) {
+					navigator.getUserMedia({video: true}, function(stream) {
+						my_stream = stream;
+						thevideo.src = window.URL.createObjectURL(stream) || stream;
+						thevideo.play();
+						connectPeer(); // run this function
+
+						//
+						}, function(error) {alert("Failure " + error.code);}
+					);
+				}
+		
+			
+			var sendMessage = function() {
+				connection.send(document.getElementById('chat').value);
+				document.getElementById('chat').value = "";
+			};
+
+			var makeConnection = function() {
+				connection = peer.connect(document.getElementById('other_peer_id').value);
+				connection.on('open', function(data) {
+					document.getElementById('chatlog').innerHTML += "Connection Established";
+				});
+
+				connection.on('data', function(data) {
+					document.getElementById('chatlog').innerHTML += data;
+				});
+			};	
+
+
+				console.log("video is not null");
+
+				window.addEventListener('load',init);
+
+
+				 //peer function
+		    	function connectPeer() {
+				peer = new Peer({host: 'kcl389.itp.io', port: 9000, path: '/'});
+
+
+				// Get an ID from the PeerJS server		
+				peer.on('open', function(id) {
+					console.log('My peer ID is: ' + id);
+					peer_id = id;
+
+					socket.emit('peerid', peer_id); // goes through with this one
+
+					socket.on('disconnect', function(data){
+						console.log("disconnected", data);
+						var removedVideo = document.getElementById("cam-"+data);
+						if(removedVideo !== null){
+							document.body.removeChild(removedVideo);
+						}
+					})
+
+					socket.on('peerid',function(data) {
+						makeCall(data);
+					});
+				});
+
+				peer.on('error', function(err) { 
+					console.log(err);
+				});
+				//receive a call -- if someone is calling us and the video should be displayed on our page
+				peer.on('call', function(incoming_call) {
+					console.log("Got a call!", incoming_call);
+					console.log(incoming_call.id, peer.id);
+					incoming_call.answer(my_stream); // Answer the call with our stream from getUserMedia
+					incoming_call.on('stream', function(remoteStream) {  // we receive a getUserMedia stream from the remote caller
+						// And attach it to a video object
+						var ovideoElement = document.createElement('video');
+						ovideoElement.style.width = '150';
+						ovideoElement.id = "cam-"+incoming_call.peer;
+						ovideoElement.src = window.URL.createObjectURL(remoteStream) || remoteStream;
+						ovideoElement.setAttribute("autoplay", "true");		
+						ovideoElement.play();
+						document.body.appendChild(ovideoElement);
+
+					});
+				});
+
+			//if we're making a call and the video should be displayed on their page
+			function makeCall(idToCall) {
+				//var idToCall = document.getElementById('tocall').value;
+				console.log("peer: " + peer);
+				var call = peer.call(idToCall, my_stream);
+				console.log("made a call: " + call);
+		</script>
+	</head>
+	<body onload="init()">
+		
+		<input type="text" id="other_peer_id" value="PeerID to connect with">
+		<input type="button" value="Call" onclick="makeConnection()"><br />
+		<input type="text" id="chat">
+		<input type="button" value="Send" onclick="sendMessage()"><br />
+		<div id="chatlog"></div>
+	</body>
+</html>
+Try it
+
+Another Example

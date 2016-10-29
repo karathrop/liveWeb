@@ -1,14 +1,10 @@
-<html>
-	<head>
-		<link type='text/css' rel='stylesheet' href='style.css'></link> <!-- put all css in this file -->
-		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		<script src="peer.min.js"></script>
-		
-		<script type="text/javascript">
-
 			var socket = io.connect();
 
-			
+			//drawing
+			var context;
+			var canvas;
+			var mouseIsDown = false;
+			var col='hsl(' + 360 * Math.random() + ', 50%, 50%)';
 
 			//video
 			var clientID;
@@ -209,42 +205,7 @@
 				var call = peer.call(idToCall, my_stream);
 				console.log("made a call: " + call);
 
-				// call.on('stream', function(remoteStream) {
-				// 	console.log("Got remote stream");
-				// 	var ovideoElement = document.createElement('video');
-				// 	ovideoElement.style.width = '150';
-				// 	ovideoElement.src = window.URL.createObjectURL(remoteStream) || remoteStream;
-				// 	ovideoElement.setAttribute("autoplay", "true");
-				// 	ovideoElement.play();
-				// 	document.body.appendChild(ovideoElement);
-				// });
+				
 
 			}
 		}
-	
-		</script>	
-	</head>
- <body>
-
- 	<div id='header'>
- 		<h1>Let's Chat</h1>
- 	</div>
-
- 	
- 	<video id="thevideo" muted="muted" width="150" ></video><br/>
-
- 	<div id = "main">
- 		<div id = "user-input" align="right">
- 			<!-- <textarea id="message" name="message" type="text" class="textarea">Enter your message and see full chat below!</textarea>
- 			<input id ="submit-message" type="submit" value="submit"> -->
-
- 			<input id='message' name='message' type='text' class='textarea' onKeyPress='return enter(event)'>
-			<input id='submit-message' type='submit' class='submitbutton' value='submit' align="right">
- 			<br></br>
- 			<div id="messages" align='center'>
- 			</div>
- 			<canvas  id="mycanvas"></canvas>
- 		</div>
- 	</div>
- </body>
-</html>
