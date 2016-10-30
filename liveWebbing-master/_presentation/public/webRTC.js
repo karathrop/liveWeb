@@ -19,7 +19,7 @@ webRTC.Go = function() {
 
 		//get the webRTC data from client
 	webRTC.peer = new Peer({
-					host: 'localhost',
+					host: 'kcl389.itp.io',
 					port: 8088,
 					path: '/',
 					secure: true
