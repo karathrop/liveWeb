@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> ( cardBoredGo! ) </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<style>
+	body {
+		margin: 0px;
+		overflow: hidden;
+	}
+	#example {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	#cardBoredGo{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+ </style>
+</head>
+	<body>
+		<!-- this is where threejs lives -->
+			<div id="cardBoredGo"></div> -->
+		<div id="container"></div>
+			 <script src="libs/three.min.js"></script>
+			<script src="libs/TrackballControls.js"></script>
+			<script src="libs/OrbitControls.js"></script>
+			<script src="libs/StereoEffect.js"></script>
+			<script src="libs/DeviceOrientationControls.js"></script>
+			<script src="http://itp.nyu.edu/~sve204/liveweb_fall2016/peer.min.js"></script>
+
+			<script src="world.js"></script>
+			<!-- <script src="worldBlob.js"></script> -->
+
+	<!-- make sure theta is streaming to canvas: -->
+	<!-- <video id="theta" width="100%" style=""></video> -->
+	<video id="theta" style="display:none"></video>
+
+	<!-- <video id="test" style="display:none" width="100%">
+	<source src ="assests/IMG_6901.MP4">
+	</video> -->
+	<body onload="init()">
+		<div id="othermouse" style="background-color: red; position: absolute;top: 0px; left: 0px; width: 10px height: 10px;"></div>
+
+		<input type="text" id="other_peer_id" value="PeerID to connect with">
+		<input type="button" value="Call" onclick="makeConnection()"><br />
+		<input type="text" id="chat">
+		<input type="button" value="Send" onclick="sendMessage()"><br />
+		<div id="chatlog"></div>
+	<!-- <canvas style="" id="theCanvas" width="768" height="432"></canvas> -->
+
+	</body>
+</html>

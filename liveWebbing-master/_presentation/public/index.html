@@ -1,0 +1,78 @@
+<!-- this has the html && the video stuff -->
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+		<script src="peer.min.js"></script>
+		<script src="three.min.js"></script>
+		<script type="text/javascript" src = "webRTC.js"></script>
+		<script>
+
+		var theCanvas;
+		var theContxt;
+		var myCamera;
+
+		var videoGo = function(){
+			var my_stream = null;
+				// The video element on the page to display the webcam
+			window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+			myCamera = document.getElementById('myvideo');
+			// if we have the method
+			if (navigator.getUserMedia) {
+					navigator.getUserMedia({video: true, audio: true}, function(stream) {
+									my_stream = stream;
+									myCamera.src = window.URL.createObjectURL(stream) || stream;
+									myCamera.play();
+									draw();
+									console.log("faceGO!");
+							}, function(err) {
+									console.log('Failed to get local stream' ,err);
+					});
+		}
+
+		theCanvas = document.getElementById('theCanvas');
+		theContxt = theCanvas.getContext('2d');
+	}
+
+
+		function draw(){
+			theContxt.drawImage(myCamera,0,0,theCanvas.width,theCanvas.height);
+			theContxt.strokeRect(0,0,theCanvas.width,theCanvas.height);
+			setTimeout(draw,100);
+		}
+
+		window.addEventListener('load', function(){
+			videoGo();
+			webRTC.Go();
+		});
+
+</script>
+	</head>
+
+
+
+	<body>
+		<div id="intro" class="header"></div>
+				<h1></h1>
+				<div id = "inputBox" >
+					<input type="text" id="other_peer_id" value="PeerID to Call">
+					<input type="button" value="Call" onclick="placecall()"><br />
+					<input type="text" id="chat">
+					<input type="button" value="Send" onclick="sendmessage()"><br />
+				<div id="chatlog"></div>
+
+		<div id="connection" class="header">
+		</div>
+
+		<video id="myvideo" width="320" height="240" style="display:none"></video>
+		<canvas style="" id="theCanvas" width="768" height="432"></canvas>
+
+		<br />
+		<div id="chatlog"></div>
+
+	</body>
+
+	</html>
