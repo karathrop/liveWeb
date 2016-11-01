@@ -1,15 +1,44 @@
 <html>
+	<html lang="en">
 	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link href="css/bootstrap.min.css" rel="stylesheet">
 		<link type='text/css' rel='stylesheet' href='style.css'></link>
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+
 		<script src="peer.min.js"></script>
 		
 		<script type="text/javascript">
+
+			// function init() {
+			// 		var button = document.getElementById("enterbutton");
+
+			// 		button.addEventListener("click", function() {
+			// 		Page1.style.display="none";
+			// 		Page2.style.display="block";
+			// 	});
+			// }
+
 			var myvideo = null;
 			var mystream = null;
 			var mypeerid = null;
 			var peer = null;
+
+		
 						
 			var init = function() {
+
+				var button = document.getElementById("enterbutton");
+
+					button.addEventListener("click", function() {
+					console.log("click");
+					Page1.style.display="none";
+					Page2.style.display="block";
+				});
+
 				myvideo = document.getElementById('myvideo');
 			
 				window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
@@ -26,7 +55,10 @@
 							alert("Failed to get local stream " + err);
 						}
 					);
-				}	
+				}
+			};	
+
+		
 				
 
 				peer = new Peer({host: 'liveweb.itp.io', port: 9000, path: '/'});
@@ -34,6 +66,10 @@
 				peer.on('open', function(id) {
 				  console.log('My peer ID is: ' + id);
 				  mypeerid = id;
+				});
+
+				peer.on("error", function(msg) {
+					console.log(msg);
 				});
 				
 				peer.on('call', function(call) {					
@@ -49,7 +85,9 @@
 								
 				    });					
 				});	 
-			};	
+
+			
+			
 			
 			var placecall = function() {				
 				var call = peer.call(document.getElementById('other_peer_id').value, mystream);
@@ -64,19 +102,51 @@
 					othervideo.play();
 					
 				});
-			};	
+			}	
 		</script>
 	</head>
 	
-	<body onload="init()">
-		My video:
-		<video id="myvideo" width="320" height="240"></video>	
+	<body 
+		onload="init()">
+			<div id="Page1">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-3"></div>
+						<div class="col-sm-6">
+							<h1>You're Invited...</h1>
+							<h3>to a mystery dinner party</h3>
 
-		<input type="text" id="other_peer_id">
-		<input type="button" value="Call" onclick="placecall()">
+							<img src="dinnerparty.gif" id="dinnergif" alt="HTML5 Icon" width="380" height="253" frameBorder="0" class="giphy-embed" allowFullScreen></img><p><a href="https://giphy.com/gifs/usnationalarchives-thanksgiving-yum-turkey-3oz8xIQW7JW0Va9AC4"></a></p>
+							<h5>You have mysteriously turned into a Bot and have lost of all your memory of your human life.
+							A special AI team has been chosen for you. They can only communicate via this screen while you not only figure out who you are having dinner with, but who you have become. </h5>
+							<p> </p>
+							<button type="button" class="btn btn-secondary" id="enterbutton"> RSVP </button>
+						</div>
+						<div class="col-sm-3"></div>
+					</div>
+				</div>			
+			</div>
+			<div id="Page2" style="display:none">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-3"></div>
+						
+						<div class="col-sm-6">
+							<h1> a live dinner party</h1>
+							<input type="text" placeholder= "type in a peer id" id="other_peer_id">
+							<button type="button" onclick="placecall()" class="btn btn-secondary">Join a Dinner Party</button>
+						</div>
+						<div class="col-sm-3"></div>
+						
+					</div>
+				</div>
+					<video id="myvideo" width="320" height="240"></video>	
+					<video id="othervideo" width="320" height="240"></video>
+			</div>	
 	</body>
 </html>
 
+  
 
 
 

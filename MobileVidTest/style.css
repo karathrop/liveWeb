@@ -1,9 +1,57 @@
-#video {
+body {
+	background-color: #8a8aba;
+	background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+#othervideo {
 	display: show;
-/*	width: 100%    !important;
+	/*width: 100%    !important;
     height: 100%   !important;*/
 }
 
 #myvideo {
 	display: none;
 }
+
+.col-sm-6 {
+	padding-top: 30px;
+	text-align: center;
+}
+
+.btn-secondary {
+	color: #0d1c32;
+	font-family: 'Poiret One', cursive;
+
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: 1px solid #ddd;
+}
+
+#other_peer_id {
+	width: 250px;
+	font-family: 'Poiret One', cursive;
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Sacramento', cursive;
+}
+
+h3 {
+	font-family: 'Poiret One', cursive;
+}
+
+h5 {
+	font-family: 'Poiret One', cursive;
+}
+
+#dinnergif {
+	align-content: 
+}
+

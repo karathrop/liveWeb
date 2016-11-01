@@ -1,4 +1,4 @@
-// Use the http module: http://nodejs.org/api/http.html
+my// Use the http module: http://nodejs.org/api/http.html
 var http = require('https');
 var fs = require('fs');
 var PeerServer = require('peer').PeerServer;
