@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<link type='text/css' rel='stylesheet' href='style.css'></link>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+
+			var r = 255 * Math.random();
+			var g = 255 * Math.random();
+			var b = 255 * Math.random();
+			// rgb(255, 0, 0)
+			var color = "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) + ")";
+			console.log("Color: " + color);
+
+			var socket = io.connect('http://kcl389.itp.io:1025');
+
+			socket.on('connect', function() {
+				console.log("Connected");
+			});
+
+			var context;
+			var count = 0;
+
+			socket.on('sensor', function(data) {
+				console.log(data);
+				context.clearRect(0,0,600,600);
+				context.fillRect(100, 100, data,data);
+			});
+			
+			function init() {
+				var canvas = document.getElementById('mycanvas');
+				context = canvas.getContext('2d');
+			}
+
+
+			window.addEventListener('load', init);
+		</script>
+	</head>
+
+
+<body>
+	<canvas width="600" height="600" id="mycanvas" />
+	<!-- <h1> hey hey</h1> -->
+</body>
+
+</html>
+
