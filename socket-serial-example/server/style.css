@@ -1,0 +1,15 @@
+
+
+h1{
+    text-transform: uppercase;
+    color: black;
+}
+
+
+
+body {
+    font-family: arial, helvetica, non-serif;
+    font-size: 9pt;
+    /*color: color;    */
+	background-color: #daadad;
+    }

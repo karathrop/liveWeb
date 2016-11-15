@@ -8,31 +8,6 @@ var http = require('http');
 var fs = require('fs');
 var url =  require('url');
 
-var SerialPort = require('serialport');
-var serialPort = new SerialPort("/dev/cu.usbmodem1421", {
-  baudrate: 9600,
-	parser: serialPort.parsers.readline('\n')
-});
-
-var buffer = [];
-
-serialPort.on("open", function () {
-  console.log('open');
-});
-
-//   var socket = require('socket.io-client')('http://kcl389.itp.io:1025');
-//   socket.on('connect', function(){
-//   	 console.log("Socket COnnected");
-
-// 	  SerialPort.on('data', function(data) {
-	  	
-// 	    console.log('data received: ' + data);
-// 	    socket.emit('sensor',data);
-// 	  });
-//   });
-// });
-
-
 
 function handleIt(req, res) {
 	console.log("The URL is: " + req.url);

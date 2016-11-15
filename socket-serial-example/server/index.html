@@ -4,7 +4,10 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript" >
 
-	
+			// var r = data
+			// var g = 255 * Math.random();
+			// var b = 255 * Math.random();
+			// rgb(255, 0, 0)
 			var colordata;
 
 			var socket = io.connect('http://kcl389.itp.io:1025');
@@ -21,7 +24,15 @@
 			socket.on('sensor', function(data) {
 				console.log(data);
 				console.log("Color: " + (data));
+				// var color = (data/2);
+
 				
+				// var g = 255 * Math.random();
+				// var b = 255 * Math.random();
+				// colordata = "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) + ")";
+				
+
+				// context.fillStyle = "rgb(data/3, data/2, 150)";
 				context.clearRect(0,0,600,600);
 				context.fillRect(data, data, data,data);
 				context.fillRect(500, 700, data,data);
