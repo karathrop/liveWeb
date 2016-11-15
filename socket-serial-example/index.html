@@ -4,12 +4,11 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript" >
 
-			var r = 255 * Math.random();
-			var g = 255 * Math.random();
-			var b = 255 * Math.random();
+			// var r = data
+			// var g = 255 * Math.random();
+			// var b = 255 * Math.random();
 			// rgb(255, 0, 0)
-			var color = "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) + ")";
-			console.log("Color: " + color);
+			var colordata;
 
 			var socket = io.connect('http://kcl389.itp.io:1025');
 
@@ -20,16 +19,36 @@
 			var context;
 			var count = 0;
 
+
+
 			socket.on('sensor', function(data) {
 				console.log(data);
+				console.log("Color: " + (data));
+				// var color = (data/2);
+
+				
+				// var g = 255 * Math.random();
+				// var b = 255 * Math.random();
+				// colordata = "rgb(" + Math.floor(r) + "," + Math.floor(g) + "," + Math.floor(b) + ")";
+				
+
+				// context.fillStyle = "rgb(data/3, data/2, 150)";
 				context.clearRect(0,0,600,600);
-				context.fillRect(100, 100, data,data);
+				context.fillRect(data, data, data,data);
+				context.fillRect(500, 700, data,data);
+				
 			});
 			
 			function init() {
 				var canvas = document.getElementById('mycanvas');
 				context = canvas.getContext('2d');
+				context.clearRect(50,300,600,600);
+				context.fillStyle = "rgb(150, 100, 200)";
+
+
+			
 			}
+
 
 
 			window.addEventListener('load', init);
@@ -38,8 +57,9 @@
 
 
 	<body>
-		<canvas width="600" height="600" id="mycanvas" />
-		<!-- <h1> hey hey</h1> -->
+		<canvas width="800" height="800" id="mycanvas" />
+		<h1> Watch me</h1>
+		<small>dance</small>
 	</body>
 
 </html>
