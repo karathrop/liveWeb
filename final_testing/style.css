@@ -1,0 +1,17 @@
+body {
+	background-color: #9c466d;
+}
+
+span#print{
+   /* background-color:#a9e2f9;*/
+    padding:5px;
+    color: white;
+    font-family: 'Cabin Sketch', cursive;
+
+}
+
+.col-md-8.h3 {
+	color: #c6b1c0;
+	font-family: 'Roboto', sans-serif;
+}
+

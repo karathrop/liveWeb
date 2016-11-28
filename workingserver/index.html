@@ -1,7 +1,9 @@
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link type='text/css' rel='stylesheet' href='style.css'></link>
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script type="text/javascript" >
 
 	
@@ -22,7 +24,7 @@
 				console.log(data);
 				console.log("Color: " + (data));
 				
-				context.clearRect(0,0,600,600);
+			
 				context.fillRect(data, data, data,data);
 				context.fillRect(500, 700, data,data);
 				
@@ -33,22 +35,52 @@
 				context = canvas.getContext('2d');
 				context.clearRect(50,300,600,600);
 				context.fillStyle = "rgb(150, 100, 200)";
-
-
 			
 			}
 
-
-
 			window.addEventListener('load', init);
+
+
+	// 		$( document ).ready(function() {
+	// 		function what(){
+
+	// 		var myArray = ["hey", "yoyo", "sup"];
+	// 		var myIndex = 1;
+	// 		var print = document.getElementById('print');
+
+	// 		print.innerHTML = myArray[0]; //Print first value of array right away.
+	// 		print.style.color = myArray[0];
+
+
+	// 		function nextElement() {
+	// 			print.innerHTML = myArray[myIndex];
+	// 			print.style.color = myArray[myIndex];
+	// 			myIndex = (myIndex + 1) % (myArray.length);
+	// 		}
+	// 	}
+	// });
+				
+
+
+
+			// document.getElementById("messages").style.visibility = 'visible';
+
+
+
 		</script>
 	</head>
 
 
 	<body>
-		<canvas width="800" height="800" id="mycanvas" />
-		<h1> Watch me</h1>
-		<small>dance</small>
+	<!-- 	<canvas width="800" height="800" id="mycanvas" /> -->
+		<h1> My body</h1>
+		<h2>talks</h2>
+
+		<p>The message is... <span id="print"></span>.</p> 
+
+		<a id="click" href="#" onclick="nextElement();">Click</a>
+
+
 	</body>
 
 </html>
