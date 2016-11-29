@@ -7,6 +7,12 @@ span#print{
     padding:5px;
     color: white;
     font-family: 'Cabin Sketch', cursive;
+    font-size: 75px;
 
 }
 
+h3 {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+
+}
