@@ -1,10 +1,12 @@
 var spawn = require("child_process").spawn; // allows child processes
-var cat = spawn("cat", ["/tmp/cu.LightBlue-Bean"]); // this is our device concatenator
+var cat = spawn("cat", ["dev/cu.LightBlue-Bean"]); // this is our device concatenator
 
 var osc = require('osc-min');
 var dgram = require('dgram');
 var udp = dgram.createSocket('udp4');
 var outport = 8000;
+
+
 
 // this stuff runs whenever there's data to be read in the child process:
 cat.stdout.on("data", function(data) {
