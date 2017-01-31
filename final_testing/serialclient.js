@@ -24,6 +24,7 @@ serialPort.on("open", function () {
 	  	
 	    console.log('data received: ' + data);
 	    socket.emit('sensor',data.toString());
+	    //socket.emit('sensor2',data.toString());
 	  });
   });
 });

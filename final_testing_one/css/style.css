@@ -1,0 +1,41 @@
+body {
+	
+    margin: 0px;
+
+}
+
+span#print{
+ 
+    color: white;
+    font-size: 100px;
+    font-family: 'Cabin Sketch', cursive;
+   /* width: 50%;
+    height: 100%;
+  */
+
+}
+
+span#print2{
+   /* background-color:#a9e2f9;*/
+    padding:5px;
+    color: "#03144b";
+    font-size: 100px;
+    font-family: 'Cabin Sketch', cursive;
+   /* width: 50%;
+    height: 100%;
+*/
+
+}
+#leftscreen{
+    height: 800px;
+    /*width: 400px;*/
+}
+   /* margin: 0px;
+}*/
+
+#rightscreen{
+	height: 800px;
+    /*width: 400px;*/
+    
+   /* right-margin: 0px;*/
+}

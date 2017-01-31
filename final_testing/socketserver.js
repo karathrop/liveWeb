@@ -44,12 +44,26 @@ console.log('Server listening on port 8873');
 
 var io = require('socket.io').listen(httpServer);
 
+// var socketIdA, socketIdB;
+
 io.sockets.on('connection', 
 	function (socket) {	
-		console.log("We have a new client: " + socket.id);
+		console.log("We have a new client: " + socket.id);(
+				// socket.on('login',function(data){
+				// 	if(data == 'a'){
+				// 		socketIdA = socket.id;
+				// 	}else if (data == 'b'){
+				// 		socketIdB = socket.id;
+				// 	}
+
+				// });
 	
 		socket.on('sensor', function(data) {
 			console.log(data);
+			// var dataToSend = {
+			// 	'id':socket.id,
+			// 	'data':data
+			// }
 			io.sockets.emit("sensor", data);
 		});
 	}

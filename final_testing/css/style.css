@@ -1,18 +1,58 @@
 body {
-	background-color: #9c466d;
+	background-color: #261E3B;
 }
+
+.container {
+    width: 100%;
+}
+
+
 
 span#print{
    /* background-color:#a9e2f9;*/
-    padding:5px;
+    /*margin: 0px;*/
+    padding-right: 5px;
+   /* padding:5px;*/
     color: white;
+    font-size: 750%;
     font-family: 'Cabin Sketch', cursive;
-    font-size: 75px;
 
 }
 
-h3 {
-	color: white;
+span#print2{
+   /* background-color:#a9e2f9;*/
+    /*margin: 0px;*/
+    padding-right: 5px;
+    /*padding:5px;*/
+    color: #E1E7E9;
+    font-size: 750%;
+    font-family: 'Ravi Prakash', cursive;
+    height: 100%;
+
+
+}
+#leftscreen{
+	width: 50%;
+    height: 1600px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 300%;
+    color: #858D9F ;
+    padding-left: 100px;
+
+}
+
+#rightscreen{
+	width: 50%;
+    height: 1600px;
+    font-size: 300%;
+    font-family: 'Roboto', sans-serif;
+    color: #858D9F ;
+    padding-left: 100px;
+
+}
+
+/*span#title {
+	color: #c6b1c0;
 	font-family: 'Roboto', sans-serif;
-
 }
+*/

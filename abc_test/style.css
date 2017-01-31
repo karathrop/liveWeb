@@ -1,0 +1,17 @@
+body {
+	background-color: #9c466d;
+}
+
+span#print{
+   /* background-color:#a9e2f9;*/
+    padding:5px;
+    color: white;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 250px;
+
+}
+
+h3 {
+	color: white;
+	font-family: 'Roboto', cursive;
+}

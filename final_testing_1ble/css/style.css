@@ -1,0 +1,35 @@
+body {
+	background-image: url("ccs/color.jpg");
+}
+
+span#print{
+   /* background-color:#a9e2f9;*/
+    padding:5px;
+    color: white;
+    font-size: 120px;
+    font-family: 'Cabin Sketch', cursive;
+
+}
+
+span#print2{
+   /* background-color:#a9e2f9;*/
+    padding:5px;
+    color: grey;
+    font-size: 120px;
+    font-family: 'Ravi Prakash', cursive;
+    height: 100%;
+
+}
+#leftscreen{
+	width: 50%;
+}
+
+#rightscreen{
+	width: 50%;
+}
+
+/*span#title {
+	color: #c6b1c0;
+	font-family: 'Roboto', sans-serif;
+}
+*/
