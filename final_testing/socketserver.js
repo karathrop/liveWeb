@@ -19,7 +19,7 @@ function handleIt(req, res) {
 
 	var path = parsedUrl.pathname;
 	if (path == "/") {
-		path = "finalproject.html";
+		path = "index.html";
 	}
 
 	fs.readFile(__dirname + path,
